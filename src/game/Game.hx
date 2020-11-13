@@ -16,8 +16,22 @@ import js.Browser.document;
 class Game extends Application {
     static public var instance:Game;
 
+    static function main():Void {
+        new Game();
+    }
+
     public function new() {
-        super(Config.gameWidth, Config.gameHeight, ".root", phaser.scale.scalemodes.NONE);
+  var config = {
+            render:{
+                transparent:false
+            },
+            scale : {
+                mode: phaser.scale.scalemodes.NONE
+            },
+            backgroundColor:"#000000"
+        };
+
+        super(Config.gameWidth, Config.gameHeight, ".root", config);
         instance = this;
     }
 
@@ -26,8 +40,6 @@ class Game extends Application {
         super.preload();
         var scene = whiplash.Lib.phaserScene;
         Factory.preload(scene);
-        scene.load.on('progress', onLoadProgress);
-        scene.load.start();
     }
 
     override function create():Void {
@@ -37,15 +49,16 @@ class Game extends Application {
         game.sound.pauseOnBlur = false;
         whiplash.Input.setup(new JQuery(".root")[0]);
         AudioManager.init(whiplash.Lib.phaserScene);
+
+        initGame();
     }
 
     override function onGuiLoaded() {
     }
 
-    private function onLoadProgress(progress) {
-    }
-
-    static function main():Void {
-        new Game();
+    private function initGame() {
+        var engine = whiplash.Lib.ashEngine;
+        var e = Factory.createBackground();
+        engine.addEntity(e);
     }
 }

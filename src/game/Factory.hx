@@ -15,5 +15,12 @@ class Factory {
     static public function load(scene:phaser.Scene) {
     }
 
+
+    static public function createBackground() {
+        var e = new Entity();
+        e.add(new Transform());
+        e.add(new Sprite("background"));
+        return e;
+    }
 }
 
