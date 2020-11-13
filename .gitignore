@@ -1,0 +1,13 @@
+*.log
+generated
+callgrind*
+vgcore*
+tags
+packed-*
+/build
+/report
+.DS_Store
+/retail
+/*.zip
+
+
