@@ -21,7 +21,7 @@ class Game extends Application {
     }
 
     public function new() {
-  var config = {
+        var config = {
             render:{
                 transparent:false
             },
@@ -30,7 +30,6 @@ class Game extends Application {
             },
             backgroundColor:"#000000"
         };
-
         super(Config.gameWidth, Config.gameHeight, ".root", config);
         instance = this;
     }
@@ -43,22 +42,32 @@ class Game extends Application {
     }
 
     override function create():Void {
+        super.create();
+
         var scene = whiplash.Lib.phaserScene;
         Factory.load(scene);
+
         var game = whiplash.Lib.phaserGame;
         game.sound.pauseOnBlur = false;
+
         whiplash.Input.setup(new JQuery(".root")[0]);
-        AudioManager.init(whiplash.Lib.phaserScene);
 
-        initGame();
+        var engine = whiplash.Lib.ashEngine;
+
+        engine.addSystem(new ObjectSystem(), 1);
     }
 
-    override function onGuiLoaded() {
-    }
-
-    private function initGame() {
+    override function start() {
         var engine = whiplash.Lib.ashEngine;
         var e = Factory.createBackground();
+        e.get(Transform).position.setTo(Config.gameWidth / 2, Config.gameHeight / 2);
+        engine.addEntity(e);
+        var e = Factory.createPlanet();
+        e.get(Transform).position.setTo(Config.gameWidth / 2, Config.gameHeight / 2);
+        engine.addEntity(e);
+        var e = Factory.createRocket();
+        e.get(Transform).position.setTo(400, 100);
+        e.get(Object).velocity.setTo(200,-200);
         engine.addEntity(e);
     }
 }
