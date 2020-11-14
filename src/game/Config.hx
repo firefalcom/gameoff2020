@@ -1,9 +1,11 @@
 package game;
 
-import whiplash.math.Point;
-import js.Browser.window;
-
+@:build(whiplash.Macro.editable())
 class Config {
-    static public var gameWidth:Int = 1024;
-    static public var gameHeight:Int = 600;
+    static public var screen = {
+        width: 1280,
+        height: 768
+    };
+
+    static public var g = 100;
 }

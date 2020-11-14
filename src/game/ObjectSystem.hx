@@ -40,7 +40,7 @@ class ObjectSystem extends ListIteratingSystem<ObjectNode> {
                     if(distance > 0) {
                         var direction = delta;
                         direction.normalize();
-                        var force = 50 * (other.object.mass) / (distance * distance);
+                        var force = Config.g * (other.object.mass) / (distance * distance);
                         object.velocity += direction * force;
                     }
                 }

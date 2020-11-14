@@ -20,6 +20,7 @@ class Factory {
         var e = new Entity();
         e.add(new Transform());
         e.add(new Sprite("background"));
+        e.get(Transform).scale.setTo(2,2);
         return e;
     }
 

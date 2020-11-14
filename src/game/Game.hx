@@ -1,19 +1,17 @@
 package game;
 
-import whiplash.*;
 import ash.core.Entity;
 import ash.core.Engine;
 import ash.tools.ListIteratingSystem;
 import ash.core.Node;
 import ashextension.*;
-import whiplash.*;
 import js.jquery.*;
 import whiplash.phaser.*;
 import whiplash.math.*;
 import js.Browser.window;
 import js.Browser.document;
 
-class Game extends Application {
+class Game extends whiplash.Application {
     static public var instance:Game;
 
     static function main():Void {
@@ -30,7 +28,7 @@ class Game extends Application {
             },
             backgroundColor:"#000000"
         };
-        super(Config.gameWidth, Config.gameHeight, ".root", config);
+        super(Config.screen.width, Config.screen.height, ".root", config);
         instance = this;
     }
 
@@ -60,10 +58,10 @@ class Game extends Application {
     override function start() {
         var engine = whiplash.Lib.ashEngine;
         var e = Factory.createBackground();
-        e.get(Transform).position.setTo(Config.gameWidth / 2, Config.gameHeight / 2);
+        e.get(Transform).position.setTo(Config.screen.width / 2, Config.screen.height / 2);
         engine.addEntity(e);
         var e = Factory.createPlanet();
-        e.get(Transform).position.setTo(Config.gameWidth / 2, Config.gameHeight / 2);
+        e.get(Transform).position.setTo(Config.screen.width / 2, Config.screen.height / 2);
         engine.addEntity(e);
         var e = Factory.createRocket();
         e.get(Transform).position.setTo(400, 100);
