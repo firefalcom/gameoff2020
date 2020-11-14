@@ -37,6 +37,7 @@ class Factory {
         e.add(new Transform());
         e.add(new Sprite("missile"));
         e.add(new Object(true, 5));
+        e.add(new Rocket());
         return e;
     }
 }

@@ -53,6 +53,7 @@ class Game extends whiplash.Application {
         var engine = whiplash.Lib.ashEngine;
 
         engine.addSystem(new ObjectSystem(), 1);
+        engine.addSystem(new RocketSystem(), 1);
     }
 
     override function start() {
@@ -60,12 +61,17 @@ class Game extends whiplash.Application {
         var e = Factory.createBackground();
         e.get(Transform).position.setTo(Config.screen.width / 2, Config.screen.height / 2);
         engine.addEntity(e);
-        var e = Factory.createPlanet();
-        e.get(Transform).position.setTo(Config.screen.width / 2, Config.screen.height / 2);
-        engine.addEntity(e);
+        {
+            var e = Factory.createPlanet();
+            e.get(Transform).position.setTo(300, 300);
+            engine.addEntity(e);
+            var e = Factory.createPlanet();
+            e.get(Transform).position.setTo(700, 400);
+            engine.addEntity(e);
+        }
         var e = Factory.createRocket();
         e.get(Transform).position.setTo(400, 100);
-        e.get(Object).velocity.setTo(200,-200);
+        e.get(Object).velocity.setTo(200, -200);
         engine.addEntity(e);
     }
 }
