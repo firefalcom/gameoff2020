@@ -7,5 +7,14 @@ class Config {
         height: 768
     };
 
-    static public var g = 100;
+    static public var object = {
+        maxSpeed: 200,
+        g: 55
+    };
+
+    static public var rocket = {
+        boost: 1000,
+        launch : 100,
+        maxSpeed: 2000
+    };
 }

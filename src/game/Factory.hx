@@ -28,15 +28,16 @@ class Factory {
         var e = new Entity();
         e.add(new Transform());
         e.add(new Sprite("planet"));
-        e.add(new Object(false, 5000));
+        e.add(new Object(false, 5000, 140));
         return e;
     }
 
     static public function createRocket() {
         var e = new Entity();
+        e.name = "rocket";
         e.add(new Transform());
         e.add(new Sprite("missile"));
-        e.add(new Object(true, 5));
+        e.add(new Object(true, 5, 10));
         e.add(new Rocket());
         return e;
     }

@@ -40,7 +40,7 @@ class ObjectSystem extends ListIteratingSystem<ObjectNode> {
                     if(distance > 0) {
                         var direction = delta;
                         direction.normalize();
-                        var force = Config.g * (other.object.mass) / (distance * distance);
+                        var force = Config.object.g * (other.object.mass) / (distance * distance);
                         object.velocity += direction * force;
                     }
                 }
@@ -50,6 +50,12 @@ class ObjectSystem extends ListIteratingSystem<ObjectNode> {
 
             var angle = object.velocity.getAngle();
             transform.rotation = (angle * 180/Math.PI) + 90;
+
+            var length = object.velocity.getLength();
+            if(length > Config.object.maxSpeed) {
+                object.velocity.normalize();
+                object.velocity *= Config.object.maxSpeed;
+            }
         }
 
     }

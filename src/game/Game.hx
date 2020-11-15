@@ -52,8 +52,20 @@ class Game extends whiplash.Application {
 
         var engine = whiplash.Lib.ashEngine;
 
-        engine.addSystem(new ObjectSystem(), 1);
-        engine.addSystem(new RocketSystem(), 1);
+        var ingameState = createState("ingame");
+
+        ingameState.addInstance(new RocketSystem()).withPriority(1);
+        ingameState.addInstance(new ObjectSystem()).withPriority(2);
+
+        var preparingState = createIngameState("preparing");
+        preparingState.addInstance(new PrepareSystem());
+
+        var launchingState = createIngameState("launching");
+        var navigatingState = createIngameState("navigating");
+        var landingState = createIngameState("landing");
+
+        changeState("ingame");
+        changeIngameState("preparing");
     }
 
     override function start() {
@@ -63,15 +75,12 @@ class Game extends whiplash.Application {
         engine.addEntity(e);
         {
             var e = Factory.createPlanet();
+            e.name = "earth";
             e.get(Transform).position.setTo(300, 300);
             engine.addEntity(e);
             var e = Factory.createPlanet();
-            e.get(Transform).position.setTo(700, 400);
+            e.get(Transform).position.setTo(900, 400);
             engine.addEntity(e);
         }
-        var e = Factory.createRocket();
-        e.get(Transform).position.setTo(400, 100);
-        e.get(Object).velocity.setTo(200, -200);
-        engine.addEntity(e);
     }
 }

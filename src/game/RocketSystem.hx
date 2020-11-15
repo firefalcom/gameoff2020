@@ -32,9 +32,10 @@ class RocketSystem extends ListIteratingSystem<RocketNode> {
         if(whiplash.Input.mouseButtons[0]) {
             var object = node.object;
             var transform = node.transform;
-            var angle = transform.rotation * Math.PI / 180;
-            var v = Vector2.getRotatedVector(new Vector2(0, 1000), angle);
+            var angle = (transform.rotation - 90) * Math.PI / 180;
+            var v = Vector2.getRotatedVector(new Vector2(Config.rocket.boost, 0 ), -angle);
             object.velocity += v * dt;
+
         }
     }
 
