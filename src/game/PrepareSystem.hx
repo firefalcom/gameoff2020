@@ -16,13 +16,11 @@ class PrepareSystem extends ash.core.System {
     public override function addToEngine(engine:Engine) {
         super.addToEngine(engine);
         this.engine = engine;
-
         var e = Factory.createRocket();
-        e.get(Transform).position.setTo(400, 100);
+        e.get(Transform).position.setTo(-10000, 100);
         e.get(Object).setDynamic(false);
         engine.addEntity(e);
         rocketEntity = e;
-
         startPlanetEntity = engine.getEntityByName("earth");
     }
 
@@ -36,20 +34,16 @@ class PrepareSystem extends ash.core.System {
         var planetObject = startPlanetEntity.get(Object);
         var planetPosition = planetTransform.position;
         var rocketTransform = rocketEntity.get(Transform);
-
+        var rocketObject = rocketEntity.get(Object);
         var delta = mouseCoords - planetPosition;
-
         var direction = new Vector2();
         direction.copyFrom(delta);
         direction.normalize();
-
         var angle = direction.getAngle();
-
-        rocketTransform.position = planetPosition + direction * planetObject.radius;
+        rocketTransform.position = planetPosition + direction * (planetObject.radius + rocketObject.radius + 1);
         rocketTransform.rotation = (angle * 180 / Math.PI) + 90;
 
         if(whiplash.Input.mouseButtons[0]) {
-            var rocketObject = rocketEntity.get(Object);
             rocketObject.setDynamic(true);
             rocketObject.velocity = direction * Config.rocket.launch;
             Game.instance.changeIngameState("navigating");

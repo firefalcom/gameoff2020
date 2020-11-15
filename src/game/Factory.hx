@@ -28,7 +28,7 @@ class Factory {
         var e = new Entity();
         e.add(new Transform());
         e.add(new Sprite("planet"));
-        e.add(new Object(false, 5000, 140));
+        e.add(new Object(false, 5000, 130));
         return e;
     }
 

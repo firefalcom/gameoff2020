@@ -38,24 +38,30 @@ class ObjectSystem extends ListIteratingSystem<ObjectNode> {
                     var distance = delta.getLength();
 
                     if(distance > 0) {
-                        var direction = delta;
-                        direction.normalize();
-                        var force = Config.object.g * (other.object.mass) / (distance * distance);
-                        object.velocity += direction * force;
+                        if(distance < object.radius + other.object.radius) {
+                            trace("Collision!");
+                            engine.removeEntity(node.entity);
+                            Game.instance.changeIngameState("preparing");
+                        } else {
+                            var direction = delta;
+                            direction.normalize();
+                            var force = Config.object.g * (other.object.mass) / (distance * distance);
+                            object.velocity += direction * force;
+                        }
                     }
                 }
             }
 
-            transform.position += object.velocity * dt;
-
-            var angle = object.velocity.getAngle();
-            transform.rotation = (angle * 180/Math.PI) + 90;
-
             var length = object.velocity.getLength();
+
             if(length > Config.object.maxSpeed) {
                 object.velocity.normalize();
                 object.velocity *= Config.object.maxSpeed;
             }
+
+            transform.position += object.velocity * dt;
+            var angle = object.velocity.getAngle();
+            transform.rotation = (angle * 180/Math.PI) + 90;
         }
 
     }
