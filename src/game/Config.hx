@@ -8,7 +8,7 @@ class Config {
     };
 
     static public var object = {
-        maxSpeed: 200,
+        maxSpeed: 1000,
         g: 55
     };
 

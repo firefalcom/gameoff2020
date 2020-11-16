@@ -37,8 +37,9 @@ class Factory {
         e.name = "rocket";
         e.add(new Transform());
         e.add(new Sprite("missile"));
-        e.add(new Object(true, 5, 10));
+        e.add(new Object(true, 5, 20));
         e.add(new Rocket());
+        e.get(Transform).scale.setTo(2,2);
         return e;
     }
 }

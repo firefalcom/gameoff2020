@@ -61,6 +61,7 @@ class Game extends whiplash.Application {
         preparingState.addInstance(new PrepareSystem());
 
         var launchingState = createIngameState("launching");
+        launchingState.addInstance(new LaunchSystem());
         var navigatingState = createIngameState("navigating");
         var landingState = createIngameState("landing");
 

@@ -60,8 +60,6 @@ class ObjectSystem extends ListIteratingSystem<ObjectNode> {
             }
 
             transform.position += object.velocity * dt;
-            var angle = object.velocity.getAngle();
-            transform.rotation = (angle * 180/Math.PI) + 90;
         }
 
     }
