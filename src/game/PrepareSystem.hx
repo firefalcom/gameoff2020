@@ -22,6 +22,7 @@ class PrepareSystem extends ash.core.System {
         engine.addEntity(e);
         rocketEntity = e;
         startPlanetEntity = engine.getEntityByName("earth");
+        engine.getEntityByName("camera").get(Camera).zoomTo(1);
     }
 
     public override function removeFromEngine(engine:Engine) {
@@ -29,7 +30,7 @@ class PrepareSystem extends ash.core.System {
     }
 
     public override function update(dt:Float) {
-        var mouseCoords = whiplash.Input.mouseCoordinates;
+        var mouseCoords = Game.instance.getMouseWorldPosition();
         var planetTransform = startPlanetEntity.get(Transform);
         var planetObject = startPlanetEntity.get(Object);
         var planetPosition = planetTransform.position;

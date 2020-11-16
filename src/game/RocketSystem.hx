@@ -38,7 +38,7 @@ class RocketSystem extends ListIteratingSystem<RocketNode> {
         }
 
         if(whiplash.Input.mouseButtons[0]) {
-            var mouseCoords = whiplash.Input.mouseCoordinates;
+            var mouseCoords = Game.instance.getMouseWorldPosition();
             var delta = mouseCoords - transform.position;
             var direction = new Vector2();
             direction.copyFrom(delta);

@@ -4,15 +4,16 @@ import ash.core.Entity;
 import ash.core.Engine;
 import ash.tools.ListIteratingSystem;
 import ash.core.Node;
-import ashextension.*;
 import js.jquery.*;
-import whiplash.phaser.*;
 import whiplash.math.*;
+import whiplash.phaser.Transform;
 import js.Browser.window;
 import js.Browser.document;
 
 class Game extends whiplash.Application {
     static public var instance:Game;
+
+    private var camera:whiplash.phaser.Camera;
 
     static function main():Void {
         new Game();
@@ -56,6 +57,7 @@ class Game extends whiplash.Application {
 
         ingameState.addInstance(new RocketSystem()).withPriority(1);
         ingameState.addInstance(new ObjectSystem()).withPriority(2);
+        ingameState.addInstance(new CameraSystem()).withPriority(3);
 
         var preparingState = createIngameState("preparing");
         preparingState.addInstance(new PrepareSystem());
@@ -65,14 +67,12 @@ class Game extends whiplash.Application {
         var navigatingState = createIngameState("navigating");
         var landingState = createIngameState("landing");
 
-        changeState("ingame");
-        changeIngameState("preparing");
     }
 
     override function start() {
         var engine = whiplash.Lib.ashEngine;
-        var e = Factory.createBackground();
-        e.get(Transform).position.setTo(Config.screen.width / 2, Config.screen.height / 2);
+        var e = Factory.createCamera();
+        camera = e.get(whiplash.phaser.Camera);
         engine.addEntity(e);
         {
             var e = Factory.createPlanet();
@@ -83,5 +83,12 @@ class Game extends whiplash.Application {
             e.get(Transform).position.setTo(900, 400);
             engine.addEntity(e);
         }
+        changeState("ingame");
+        changeIngameState("preparing");
+    }
+
+    public function getMouseWorldPosition():Vector2 {
+        var mouseCoords = whiplash.Input.mouseCoordinates;
+        return camera.getWorldPoint(mouseCoords.x, mouseCoords.y);
     }
 }

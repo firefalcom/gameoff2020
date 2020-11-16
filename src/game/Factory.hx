@@ -42,5 +42,13 @@ class Factory {
         e.get(Transform).scale.setTo(2,2);
         return e;
     }
+
+    static public function createCamera() {
+        var e = new Entity();
+        e.name = "camera";
+        e.add(new Transform());
+        e.add(new Camera(0, 0, Config.screen.width, Config.screen.height));
+        return e;
+    }
 }
 

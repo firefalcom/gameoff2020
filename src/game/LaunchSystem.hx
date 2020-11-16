@@ -25,7 +25,7 @@ class LaunchSystem extends ListIteratingSystem<RocketNode> {
     private function updateNode(node:RocketNode, dt:Float):Void {
         var object = node.object;
         var transform = node.transform;
-        var mouseCoords = whiplash.Input.mouseCoordinates;
+        var mouseCoords = Game.instance.getMouseWorldPosition();
 
         if(whiplash.Input.isKeyJustPressed(' ')) {
             var angle = (transform.rotation - 90) * Math.PI / 180;
