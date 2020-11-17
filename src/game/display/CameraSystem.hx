@@ -1,4 +1,4 @@
-package game;
+package game.display;
 
 import ash.tools.ListIteratingSystem;
 import ash.core.*;
@@ -33,17 +33,13 @@ class CameraSystem extends ListIteratingSystem<CameraNode> {
             var targetTransform = rocket.get(Transform);
             var targetPosition = targetTransform.position;
             var camera = node.camera;
-            var rectangle = new phaser.geom.Rectangle(camera.centerX - camera.displayWidth / 2, camera.centerY - camera.displayHeight / 2, camera.displayWidth, camera.displayHeight);
+            var factor = 1.5;
+            var rectangle = new phaser.geom.Rectangle(camera.centerX - camera.displayWidth / (2*factor), camera.centerY - camera.displayHeight / (2*factor), camera.displayWidth/ factor, camera.displayHeight / factor);
 
             if(!rectangle.contains(targetPosition.x, targetPosition.y)) {
                 camera.zoomTo(camera.zoom * 0.9, 250);
             } else {
-                var factor = 2;
-                var rectangle = new phaser.geom.Rectangle(camera.centerX - camera.displayWidth / (2*factor), camera.centerY - camera.displayHeight / (2*factor), camera.displayWidth/ factor, camera.displayHeight / factor);
-
-                if(rectangle.contains(targetPosition.x, targetPosition.y)) {
-                    camera.zoomTo(Math.min(camera.zoom * 1.1, 1), 250);
-                }
+                camera.zoomTo(Math.min(camera.zoom * 1.1, 1), 250);
             }
         }
     }

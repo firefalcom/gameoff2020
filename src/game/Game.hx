@@ -9,6 +9,8 @@ import whiplash.math.*;
 import whiplash.phaser.Transform;
 import js.Browser.window;
 import js.Browser.document;
+import game.logic.*;
+import game.display.*;
 
 class Game extends whiplash.Application {
     static public var instance:Game;
@@ -80,6 +82,9 @@ class Game extends whiplash.Application {
             engine.addEntity(e);
             var e = Factory.createMoon();
             e.get(Transform).position.setTo(900, 400);
+            engine.addEntity(e);
+            var e = Factory.createExotic();
+            e.get(Transform).position.setTo(1300, 200);
             engine.addEntity(e);
         }
         changeState("ingame");

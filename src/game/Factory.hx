@@ -3,10 +3,11 @@ package game;
 import ash.core.*;
 import whiplash.phaser.*;
 import whiplash.math.*;
+import game.logic.*;
+import game.display.*;
 
 class Factory {
-
-    static var phaserScene : phaser.Scene;
+    static var phaserScene:phaser.Scene;
 
     static public function preload(scene:phaser.Scene) {
         phaserScene = scene;
@@ -14,7 +15,6 @@ class Factory {
 
     static public function load(scene:phaser.Scene) {
     }
-
 
     static public function createBackground() {
         var e = new Entity();
@@ -40,6 +40,15 @@ class Factory {
         e.add(new Sprite("moon"));
         e.add(new Object(false, 1000, 65));
         e.get(Transform).scale.setTo(0.3, 0.3);
+        return e;
+    }
+
+    static public function createExotic() {
+        var e = new Entity();
+        e.add(new Transform());
+        e.add(new Sprite("exotic"));
+        e.add(new Object(false, 5000, 105));
+        e.get(Transform).scale.setTo(0.5, 0.5);
         return e;
     }
 

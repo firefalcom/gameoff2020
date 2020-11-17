@@ -1,4 +1,4 @@
-package game;
+package game.logic;
 
 import ash.tools.ListIteratingSystem;
 import ash.core.*;
