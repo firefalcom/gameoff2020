@@ -31,13 +31,23 @@ class RocketSystem extends ListIteratingSystem<RocketNode> {
         var object = node.object;
         var transform = node.transform;
 
+        var boost = 0;
+
         if(whiplash.Input.keys[' ']) {
-            var angle = (transform.rotation - 90) * Math.PI / 180;
-            var v = Vector2.getRotatedVector(new Vector2(Config.rocket.boost, 0), -angle);
-            object.velocity += v * dt;
+            boost= Config.rocket.megaboost;
         }
 
         if(whiplash.Input.mouseButtons[0]) {
+            boost= Config.rocket.boost;
+        }
+
+        if(boost != 0) {
+            var angle = (transform.rotation - 90) * Math.PI / 180;
+            var v = Vector2.getRotatedVector(new Vector2(boost, 0), -angle);
+            object.velocity += v * dt;
+        }
+
+        {
             var mouseCoords = Game.instance.getMouseWorldPosition();
             var delta = mouseCoords - transform.position;
             var direction = new Vector2();
@@ -46,9 +56,6 @@ class RocketSystem extends ListIteratingSystem<RocketNode> {
             var angle = direction.getAngle();
             transform.rotation = (angle * 180 / Math.PI) + 90;
         }
-
-        // var angle = object.velocity.getAngle();
-        // transform.rotation = (angle * 180/Math.PI) + 90;
     }
 
     private function onNodeAdded(node:RocketNode) {

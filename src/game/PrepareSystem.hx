@@ -44,7 +44,7 @@ class PrepareSystem extends ash.core.System {
         rocketTransform.position = planetPosition + direction * (planetObject.radius + rocketObject.radius + 1);
         rocketTransform.rotation = (angle * 180 / Math.PI) + 90;
 
-        if(whiplash.Input.isKeyJustPressed(' ')) {
+        if(whiplash.Input.isKeyJustPressed(' ') || whiplash.Input.mouseButtons[0]) {
             Game.instance.changeIngameState("launching");
         }
     }

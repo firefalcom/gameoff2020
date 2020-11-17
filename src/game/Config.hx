@@ -4,7 +4,7 @@ package game;
 class Config {
     static public var screen = {
         width: 1280,
-        height: 768
+        height: 720
     };
 
     static public var object = {
@@ -13,7 +13,8 @@ class Config {
     };
 
     static public var rocket = {
-        boost: 1000,
-        launch : 100,
+        boost: 500,
+        megaboost: 2000,
+        launch : 50,
     };
 }

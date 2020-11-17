@@ -33,6 +33,8 @@ class LaunchSystem extends ListIteratingSystem<RocketNode> {
             object.setDynamic(true);
             object.velocity = direction * Config.rocket.launch;
             Game.instance.changeIngameState("navigating");
+
+            trace(object.velocity);
         }
 
 
