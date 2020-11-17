@@ -11,9 +11,25 @@
   <script src="../deps/whiplash/deps/jquery-3.3.1.min.js"></script>
   <script src="../deps/whiplash/deps/dat.gui.min.js"></script>
   <script src="../deps/whiplash/deps/fontfaceobserver.js"></script>
+
+  <style>
+    .root {
+      width: 1280px;
+      height: 720px;
+    }
+
+    .background {
+      position: absolute;
+      width: 1280px;
+      height: 720px;
+      background-image: url(../data/gui/background.png);
+      z-index:-1;
+    }
+  </style>
 </head>
 
 <body>
+  <div class="background"></div>
   <div class="root">
   </div>
   <script src="../build/generated.js"></script>

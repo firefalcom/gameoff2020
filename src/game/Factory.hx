@@ -20,15 +20,26 @@ class Factory {
         var e = new Entity();
         e.add(new Transform());
         e.add(new Sprite("background"));
-        e.get(Transform).scale.setTo(2,2);
+        e.get(Transform).scale.setTo(2, 2);
         return e;
     }
 
-    static public function createPlanet() {
+    static public function createEarth() {
+        var e = new Entity();
+        e.name = "earth";
+        e.add(new Transform());
+        e.add(new Sprite("earth"));
+        e.add(new Object(false, 5000, 105));
+        e.get(Transform).scale.setTo(0.5, 0.5);
+        return e;
+    }
+
+    static public function createMoon() {
         var e = new Entity();
         e.add(new Transform());
-        e.add(new Sprite("planet"));
-        e.add(new Object(false, 5000, 130));
+        e.add(new Sprite("moon"));
+        e.add(new Object(false, 1000, 65));
+        e.get(Transform).scale.setTo(0.3, 0.3);
         return e;
     }
 
@@ -36,10 +47,10 @@ class Factory {
         var e = new Entity();
         e.name = "rocket";
         e.add(new Transform());
-        e.add(new Sprite("missile"));
+        e.add(new Sprite("rocket"));
         e.add(new Object(true, 5, 20));
         e.add(new Rocket());
-        e.get(Transform).scale.setTo(2,2);
+        e.get(Transform).scale.setTo(0.2, 0.2);
         return e;
     }
 

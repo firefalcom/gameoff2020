@@ -22,12 +22,12 @@ class Game extends whiplash.Application {
     public function new() {
         var config = {
             render:{
-                transparent:false
+                transparent: true
             },
             scale : {
                 mode: phaser.scale.scalemodes.NONE
             },
-            backgroundColor:"#000000"
+            // backgroundColor:"#000000"
         };
         super(Config.screen.width, Config.screen.height, ".root", config);
         instance = this;
@@ -75,11 +75,10 @@ class Game extends whiplash.Application {
         camera = e.get(whiplash.phaser.Camera);
         engine.addEntity(e);
         {
-            var e = Factory.createPlanet();
-            e.name = "earth";
+            var e = Factory.createEarth();
             e.get(Transform).position.setTo(300, 300);
             engine.addEntity(e);
-            var e = Factory.createPlanet();
+            var e = Factory.createMoon();
             e.get(Transform).position.setTo(900, 400);
             engine.addEntity(e);
         }
