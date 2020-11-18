@@ -16,11 +16,13 @@ class PrepareSystem extends ash.core.System {
     public override function addToEngine(engine:Engine) {
         super.addToEngine(engine);
         this.engine = engine;
-        var e = Factory.createRocket();
-        e.get(Transform).position.setTo(-10000, 100);
-        e.get(Object).setDynamic(false);
-        engine.addEntity(e);
-        rocketEntity = e;
+        {
+            var e = Factory.createRocket();
+            e.get(Transform).position.setTo(-10000, 100);
+            e.get(Object).setDynamic(false);
+            rocketEntity = e;
+            engine.addEntity(e);
+        }
         startPlanetEntity = engine.getEntityByName("earth");
         engine.getEntityByName("camera").get(Camera).zoomTo(1);
     }

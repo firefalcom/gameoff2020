@@ -3,17 +3,25 @@ package game;
 import ash.core.*;
 import whiplash.phaser.*;
 import whiplash.math.*;
-import game.logic.*;
-import game.display.*;
 
 class Factory {
     static var phaserScene:phaser.Scene;
 
     static public function preload(scene:phaser.Scene) {
         phaserScene = scene;
+        scene.load.spritesheet('firesheet', '../data/textures/fire.png', { frameWidth: 128, frameHeight: 128 });
     }
 
     static public function load(scene:phaser.Scene) {
+        scene.anims.create({
+            key: 'fire',
+            frames: [
+            { key:'firesheet', frame: 0 },
+            { key:'firesheet', frame: 1 },
+            ],
+            frameRate: 10,
+            repeat: -1
+        });
     }
 
     static public function createBackground() {
@@ -29,7 +37,7 @@ class Factory {
         e.name = "earth";
         e.add(new Transform());
         e.add(new Sprite("earth"));
-        e.add(new Object(false, 5000, 105));
+        e.add(new game.logic.Object(false, 5000, 105));
         e.get(Transform).scale.setTo(0.5, 0.5);
         return e;
     }
@@ -38,7 +46,7 @@ class Factory {
         var e = new Entity();
         e.add(new Transform());
         e.add(new Sprite("moon"));
-        e.add(new Object(false, 1000, 65));
+        e.add(new game.logic.Object(false, 1000, 65));
         e.get(Transform).scale.setTo(0.3, 0.3);
         return e;
     }
@@ -47,7 +55,7 @@ class Factory {
         var e = new Entity();
         e.add(new Transform());
         e.add(new Sprite("exotic"));
-        e.add(new Object(false, 5000, 105));
+        e.add(new game.logic.Object(false, 5000, 105));
         e.get(Transform).scale.setTo(0.5, 0.5);
         return e;
     }
@@ -57,9 +65,45 @@ class Factory {
         e.name = "rocket";
         e.add(new Transform());
         e.add(new Sprite("rocket"));
-        e.add(new Object(true, 5, 20));
-        e.add(new Rocket());
+        e.add(new game.logic.Object(true, 5, 20));
+        e.add(new game.logic.Rocket());
+        e.add(new game.display.Rocket());
+        e.add(new Container());
         e.get(Transform).scale.setTo(0.2, 0.2);
+        e.get(game.display.Rocket).boostEntities = [
+                    null,
+                    createFlame(),
+                    createBigFlame()
+                ];
+
+        for(b in e.get(game.display.Rocket).boostEntities) {
+            if(b != null) {
+                e.get(Container).addChild(b);
+            }
+        }
+
+        return e;
+    }
+
+    static public function createBigFlame() {
+        var e = new Entity();
+        e.add(new Transform());
+        e.get(Transform).position.setTo(0, 180);
+        e.get(Transform).scale.setTo(3, 2);
+        e.add(new Sprite("fire"));
+        e.get(Sprite).anims.play("fire");
+        e.get(Sprite).alpha = 0;
+        return e;
+    }
+
+    static public function createFlame() {
+        var e = new Entity();
+        e.add(new Transform());
+        e.get(Transform).position.setTo(0, 155);
+        e.get(Transform).scale.setTo(2.5, 1);
+        e.add(new Sprite("fire"));
+        e.get(Sprite).anims.play("fire");
+        e.get(Sprite).alpha = 0;
         return e;
     }
 

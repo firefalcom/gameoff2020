@@ -9,8 +9,6 @@ import whiplash.math.*;
 import whiplash.phaser.Transform;
 import js.Browser.window;
 import js.Browser.document;
-import game.logic.*;
-import game.display.*;
 
 class Game extends whiplash.Application {
     static public var instance:Game;
@@ -57,15 +55,18 @@ class Game extends whiplash.Application {
 
         var ingameState = createState("ingame");
 
-        ingameState.addInstance(new RocketSystem()).withPriority(1);
-        ingameState.addInstance(new ObjectSystem()).withPriority(2);
-        ingameState.addInstance(new CameraSystem()).withPriority(3);
+        ingameState.addInstance(new game.logic.RocketSystem()).withPriority(1);
+        ingameState.addInstance(new game.logic.ObjectSystem()).withPriority(2);
+
+        ingameState.addInstance(new game.display.RocketSystem()).withPriority(1);
+        ingameState.addInstance(new game.display.GlowSystem()).withPriority(1);
+        ingameState.addInstance(new game.display.CameraSystem()).withPriority(3);
 
         var preparingState = createIngameState("preparing");
-        preparingState.addInstance(new PrepareSystem());
+        preparingState.addInstance(new game.logic.PrepareSystem());
 
         var launchingState = createIngameState("launching");
-        launchingState.addInstance(new LaunchSystem());
+        launchingState.addInstance(new game.logic.LaunchSystem());
         var navigatingState = createIngameState("navigating");
         var landingState = createIngameState("landing");
 

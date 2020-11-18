@@ -29,16 +29,20 @@ class RocketSystem extends ListIteratingSystem<RocketNode> {
 
     private function updateNode(node:RocketNode, dt:Float):Void {
         var object = node.object;
+        var rocket = node.rocket;
         var transform = node.transform;
 
+        rocket.boostLevel = 0;
         var boost = 0;
 
         if(whiplash.Input.keys[' ']) {
-            boost= Config.rocket.megaboost;
+            rocket.boostLevel = 2;
+            boost = Config.rocket.megaboost;
         }
 
         if(whiplash.Input.mouseButtons[0]) {
-            boost= Config.rocket.boost;
+            rocket.boostLevel = 1;
+            boost = Config.rocket.boost;
         }
 
         if(boost != 0) {
