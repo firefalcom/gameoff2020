@@ -41,7 +41,6 @@ class Game extends whiplash.Application {
     }
 
     override function create():Void {
-        super.create();
 
         var scene = whiplash.Lib.phaserScene;
         Factory.load(scene);
@@ -57,6 +56,7 @@ class Game extends whiplash.Application {
 
         ingameState.addInstance(new game.logic.RocketSystem()).withPriority(1);
         ingameState.addInstance(new game.logic.ObjectSystem()).withPriority(2);
+        ingameState.addInstance(new game.logic.AttachSystem()).withPriority(2);
 
         ingameState.addInstance(new game.display.RocketSystem()).withPriority(1);
         ingameState.addInstance(new game.display.GlowSystem()).withPriority(1);
@@ -67,9 +67,12 @@ class Game extends whiplash.Application {
 
         var launchingState = createIngameState("launching");
         launchingState.addInstance(new game.logic.LaunchSystem());
+
         var navigatingState = createIngameState("navigating");
+
         var landingState = createIngameState("landing");
 
+        super.create();
     }
 
     override function start() {
@@ -81,12 +84,21 @@ class Game extends whiplash.Application {
             var e = Factory.createEarth();
             e.get(Transform).position.setTo(300, 300);
             engine.addEntity(e);
-            var e = Factory.createMoon();
-            e.get(Transform).position.setTo(900, 400);
-            engine.addEntity(e);
+            var p = Factory.createLauncher();
+            p.get(game.logic.Attach).planet = e;
+            p.get(game.logic.Attach).offset = 30;
+            p.get(game.logic.Attach).angle = 25;
+            engine.addEntity(p);
             var e = Factory.createExotic();
             e.get(Transform).position.setTo(1300, 200);
             engine.addEntity(e);
+            var e = Factory.createMoon();
+            e.get(Transform).position.setTo(900, 400);
+            engine.addEntity(e);
+            var p = Factory.createLandingPlatform();
+            p.get(game.logic.Attach).planet = e;
+            p.get(game.logic.Attach).angle = -45;
+            engine.addEntity(p);
         }
         changeState("ingame");
         changeIngameState("preparing");

@@ -9,17 +9,43 @@ class Factory {
 
     static public function preload(scene:phaser.Scene) {
         phaserScene = scene;
-        scene.load.spritesheet('firesheet', '../data/textures/fire.png', { frameWidth: 128, frameHeight: 128 });
+        scene.load.spritesheet('fire-sheet', '../data/textures/fire.png', { frameWidth: 128, frameHeight: 128 });
+        scene.load.spritesheet('landing-sheet', '../data/textures/spritesheet_target_V01.png', { frameWidth: 256, frameHeight: 78 });
+        scene.load.spritesheet('launching-sheet', '../data/textures/spritesheet_launcher_V01.png', { frameWidth: 256, frameHeight: 256 });
     }
 
     static public function load(scene:phaser.Scene) {
         scene.anims.create({
             key: 'fire',
             frames: [
-            { key:'firesheet', frame: 0 },
-            { key:'firesheet', frame: 1 },
+            { key:'fire-sheet', frame: 0 },
+            { key:'fire-sheet', frame: 1 },
             ],
             frameRate: 10,
+            repeat: -1
+        });
+        scene.anims.create({
+            key: 'landing',
+            frames: [
+            { key:'landing-sheet', frame: 0 },
+            { key:'landing-sheet', frame: 0 },
+            { key:'landing-sheet', frame: 0 },
+            { key:'landing-sheet', frame: 0 },
+            { key:'landing-sheet', frame: 1 },
+            ],
+            frameRate: 5,
+            repeat: -1
+        });
+        scene.anims.create({
+            key: 'launcher',
+            frames: [
+            { key:'launching-sheet', frame: 0 },
+            { key:'launching-sheet', frame: 0 },
+            { key:'launching-sheet', frame: 0 },
+            { key:'launching-sheet', frame: 0 },
+            { key:'launching-sheet', frame: 1 },
+            ],
+            frameRate: 5,
             repeat: -1
         });
     }
@@ -104,6 +130,27 @@ class Factory {
         e.add(new Sprite("fire"));
         e.get(Sprite).anims.play("fire");
         e.get(Sprite).alpha = 0;
+        return e;
+    }
+
+    static public function createLauncher() {
+        var e = new Entity();
+        e.name = "launcher";
+        e.add(new Transform());
+        e.get(Transform).scale.setTo(0.3, 0.3);
+        e.add(new game.logic.Attach());
+        e.add(new Sprite("launcherSheet"));
+        e.get(Sprite).anims.play("launcher");
+        return e;
+    }
+
+    static public function createLandingPlatform() {
+        var e = new Entity();
+        e.add(new Transform());
+        e.get(Transform).scale.setTo(0.3, 0.3);
+        e.add(new game.logic.Attach());
+        e.add(new Sprite("landingSheet"));
+        e.get(Sprite).anims.play("landing");
         return e;
     }
 

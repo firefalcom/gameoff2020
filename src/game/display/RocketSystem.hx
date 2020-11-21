@@ -45,7 +45,6 @@ class RocketSystem extends ListIteratingSystem<RocketNode> {
     }
 
     private function onNodeAdded(node:RocketNode) {
-        trace(node);
     }
 
     private function onNodeRemoved(node:RocketNode) {
