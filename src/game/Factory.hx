@@ -115,7 +115,7 @@ class Factory {
         var e = new Entity();
         e.add(new Transform());
         e.get(Transform).position.setTo(0, 180);
-        e.get(Transform).scale.setTo(3, 2);
+        e.get(Transform).scale.setTo(4, 3);
         e.add(new Sprite("fire"));
         e.get(Sprite).anims.play("fire");
         e.get(Sprite).alpha = 0;
@@ -146,6 +146,7 @@ class Factory {
 
     static public function createLandingPlatform() {
         var e = new Entity();
+        e.add(new game.logic.LandingPlatform());
         e.add(new Transform());
         e.get(Transform).scale.setTo(0.3, 0.3);
         e.add(new game.logic.Attach());

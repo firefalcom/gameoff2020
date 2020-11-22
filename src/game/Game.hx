@@ -41,7 +41,6 @@ class Game extends whiplash.Application {
     }
 
     override function create():Void {
-
         var scene = whiplash.Lib.phaserScene;
         Factory.load(scene);
 
@@ -57,10 +56,11 @@ class Game extends whiplash.Application {
         ingameState.addInstance(new game.logic.RocketSystem()).withPriority(1);
         ingameState.addInstance(new game.logic.ObjectSystem()).withPriority(2);
         ingameState.addInstance(new game.logic.AttachSystem()).withPriority(2);
+        ingameState.addInstance(new game.logic.LandingPlatformSystem()).withPriority(2);
 
         ingameState.addInstance(new game.display.RocketSystem()).withPriority(1);
         ingameState.addInstance(new game.display.GlowSystem()).withPriority(1);
-        ingameState.addInstance(new game.display.CameraSystem()).withPriority(3);
+        // ingameState.addInstance(new game.display.CameraSystem()).withPriority(3);
 
         var preparingState = createIngameState("preparing");
         preparingState.addInstance(new game.logic.PrepareSystem());
