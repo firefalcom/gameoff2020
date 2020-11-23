@@ -20,6 +20,7 @@ class Config {
 
     static public var landing = {
         distanceTolerance: 1.5,
+        distanceToAxis: 32,
         rotationTolerance: 15,
         maxSpeed: 150
     }

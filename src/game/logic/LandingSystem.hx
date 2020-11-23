@@ -3,10 +3,12 @@ package game.logic;
 import ash.tools.ListIteratingSystem;
 import ash.core.*;
 import whiplash.phaser.*;
+import whiplash.math.*;
 
 class LandingNode extends Node<LandingNode> {
     public var transform:Transform;
     public var landing:Landing;
+    public var landingPlatform:LandingPlatform;
 }
 
 class LandingSystem extends ListIteratingSystem<LandingNode> {
@@ -27,11 +29,14 @@ class LandingSystem extends ListIteratingSystem<LandingNode> {
 
     private function updateNode(node:LandingNode, dt:Float):Void {
         var landing = node.landing;
+        var rocketTransform = landing.rocketNode.transform;
+        var startTransform = landing.startTransform;
         landing.time += dt;
 
-        landing.rocketNode.transform.copyFrom(landing.startTransform);
+        var ratio:Float = landing.time / 2;
 
-        landing.rocketNode.transform.rotation = landing.time * 360;
+        rocketTransform.rotation = whiplash.tween.FloatTween.get(startTransform.rotation, node.transform.rotation, EaseOut, ratio);
+        rocketTransform.position = whiplash.tween.Vector2Tween.get(startTransform.position, node.landing.finalRocketPosition, EaseOut, ratio);
     }
 
     private function onNodeAdded(node:LandingNode) {
@@ -39,6 +44,10 @@ class LandingSystem extends ListIteratingSystem<LandingNode> {
         node.landing.startTransform = new Transform();
         node.landing.startTransform.copyFrom(node.landing.rocketNode.transform);
         node.landing.rocketNode.object.setDynamic(false);
+        node.landing.rocketNode.rocket.boostLevel = 0;
+        var angle = (node.transform.rotation - 90) * Math.PI / 180;
+        var offset = Vector2.getRotatedVector(new Vector2(node.landing.rocketNode.object.radius + node.landingPlatform.offset, 0), -angle);
+        node.landing.finalRocketPosition = node.transform.position + offset;
     }
 
     private function onNodeRemoved(node:LandingNode) {

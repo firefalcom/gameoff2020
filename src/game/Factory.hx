@@ -148,7 +148,7 @@ class Factory {
         var e = new Entity();
         e.add(new game.logic.LandingPlatform());
         e.add(new Transform());
-        e.get(Transform).scale.setTo(0.3, 0.3);
+        e.get(Transform).scale.setTo(0.25, 0.25);
         e.add(new game.logic.Attach());
         e.add(new Sprite("landingSheet"));
         e.get(Sprite).anims.play("landing");

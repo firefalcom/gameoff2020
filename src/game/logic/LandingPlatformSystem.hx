@@ -3,6 +3,7 @@ package game.logic;
 import ash.tools.ListIteratingSystem;
 import ash.core.*;
 import whiplash.phaser.*;
+import whiplash.math.*;
 
 import game.logic.RocketSystem;
 
@@ -13,7 +14,6 @@ class LandingPlatformNode extends Node<LandingPlatformNode> {
 
 class LandingPlatformSystem extends ListIteratingSystem<LandingPlatformNode> {
     private var engine:Engine;
-
     private var rocketNode:RocketNode;
 
     public function new() {
@@ -38,22 +38,28 @@ class LandingPlatformSystem extends ListIteratingSystem<LandingPlatformNode> {
         var distance = transform.position.getDistance(rocketTransform.position);
 
         if(distance < rocketObject.radius * game.Config.landing.distanceTolerance) {
-            var a = rocketTransform.rotation;
-            var b = transform.rotation;
-            var difference = 180 - Math.abs(Math.abs(a - b) - 180);
+            var angle = (transform.rotation - 90) * Math.PI / 180;
+            var v = Vector2.getRotatedVector(new Vector2(1, 0), -angle);
+            var point = transform.position + v;
+            var axisDistance = Line.distance(new Line(transform.position, point), rocketTransform.position);
 
-            if(difference < game.Config.landing.rotationTolerance) {
-                var speed = rocketObject.velocity.getLength();
+            if(axisDistance < game.Config.landing.distanceToAxis) {
+                var a = rocketTransform.rotation;
+                var b = transform.rotation;
+                var difference = 180 - Math.abs(Math.abs(a - b) - 180);
 
-                if(speed < game.Config.landing.maxSpeed) {
-                    node.entity.add(new Landing(rocketNode));
-                    Game.instance.changeIngameState("landing");
-                    trace("Landing!");
+                if(difference < game.Config.landing.rotationTolerance) {
+                    var speed = rocketObject.velocity.getLength();
+
+                    if(speed < game.Config.landing.maxSpeed) {
+                        node.entity.add(new Landing(rocketNode));
+                        Game.instance.changeIngameState("landing");
+                    } else {
+                        // trace("Too quick : " + speed);
+                    }
                 } else {
-                    trace("Too quick : " + speed);
+                    // trace("Too much rotation difference : " + difference);
                 }
-            } else {
-                trace("Too much rotation difference : " + difference);
             }
         }
     }
