@@ -30,6 +30,7 @@ class PrepareSystem extends ash.core.System {
         rocketEntity.get(Transform).position.copyFrom(launcherEntity.get(Transform).position);
 
         Game.instance.changeIngameState("launching");
+        Game.instance.changeUiState("hud");
     }
 
     public override function removeFromEngine(engine:Engine) {

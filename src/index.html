@@ -13,13 +13,29 @@
   <script src="../deps/whiplash/deps/fontfaceobserver.js"></script>
 
   <style>
-    .root {
+    .root,
+    .pages {
       width: 1280px;
       height: 720px;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .pages>div {
+      color: white;
+      position: absolute;
+      display: none;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
     }
 
     .background {
       position: absolute;
+      left:0;
+      top:0;
       width: 1280px;
       height: 720px;
       background-image: url(../data/gui/background.png);
@@ -32,6 +48,14 @@
 <body>
   <div class="background"></div>
   <div class="root">
+    <div class="pages">
+      <div class="hud">
+        HUD
+      </div>
+      <div class="win">
+        WIN
+      </div>
+    </div>
   </div>
   <script src="../build/generated.js"></script>
 </body>

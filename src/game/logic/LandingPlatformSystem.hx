@@ -23,7 +23,6 @@ class LandingPlatformSystem extends ListIteratingSystem<LandingPlatformNode> {
     public override function addToEngine(engine:Engine) {
         super.addToEngine(engine);
         this.engine = engine;
-
     }
 
     public override function removeFromEngine(engine:Engine) {
@@ -33,6 +32,10 @@ class LandingPlatformSystem extends ListIteratingSystem<LandingPlatformNode> {
     private function updateNode(node:LandingPlatformNode, dt:Float):Void {
         if(rocketNode == null) {
             rocketNode = engine.getNodeList(RocketNode).head;
+
+            if(rocketNode == null) {
+                return;
+            }
         }
 
         var transform = node.transform;
@@ -44,7 +47,6 @@ class LandingPlatformSystem extends ListIteratingSystem<LandingPlatformNode> {
         if(distance < rocketObject.radius * game.Config.landing.distanceTolerance) {
             var a = rocketTransform.rotation;
             var b = transform.rotation;
-
             var difference = 180 - Math.abs(Math.abs(a - b) - 180);
 
             if(difference < game.Config.landing.rotationTolerance) {

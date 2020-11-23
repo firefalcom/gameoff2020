@@ -51,6 +51,7 @@ class Game extends whiplash.Application {
 
         var engine = whiplash.Lib.ashEngine;
 
+
         var ingameState = createState("ingame");
 
         ingameState.addInstance(new game.logic.RocketSystem()).withPriority(1);
@@ -72,7 +73,18 @@ class Game extends whiplash.Application {
 
         var landingState = createIngameState("landing");
 
+        var winningState = createIngameState("winning");
+        winningState.addInstance(new game.logic.WinningSystem());
+
+
+
+        {
+            createUiState("hud", ".hud");
+            createUiState("win", ".win");
+        }
+
         super.create();
+
     }
 
     override function start() {
@@ -102,6 +114,7 @@ class Game extends whiplash.Application {
         }
         changeState("ingame");
         changeIngameState("preparing");
+        // changeIngameState("winning");
     }
 
     public function getMouseWorldPosition():Vector2 {
