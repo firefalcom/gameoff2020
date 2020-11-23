@@ -54,10 +54,9 @@ class Game extends whiplash.Application {
 
         var ingameState = createState("ingame");
 
-        ingameState.addInstance(new game.logic.RocketSystem()).withPriority(1);
+
         ingameState.addInstance(new game.logic.ObjectSystem()).withPriority(2);
         ingameState.addInstance(new game.logic.AttachSystem()).withPriority(2);
-        ingameState.addInstance(new game.logic.LandingPlatformSystem()).withPriority(2);
 
         ingameState.addInstance(new game.display.RocketSystem()).withPriority(1);
         ingameState.addInstance(new game.display.GlowSystem()).withPriority(1);
@@ -70,8 +69,11 @@ class Game extends whiplash.Application {
         launchingState.addInstance(new game.logic.LaunchSystem());
 
         var navigatingState = createIngameState("navigating");
+        navigatingState.addInstance(new game.logic.RocketSystem()).withPriority(1);
+        navigatingState.addInstance(new game.logic.LandingPlatformSystem()).withPriority(2);
 
         var landingState = createIngameState("landing");
+        landingState.addInstance(new game.logic.LandingSystem()).withPriority(3);
 
         var winningState = createIngameState("winning");
         winningState.addInstance(new game.logic.WinningSystem());

@@ -38,9 +38,7 @@ class RocketSystem extends ListIteratingSystem<RocketNode> {
         if(whiplash.Input.keys[' ']) {
             rocket.boostLevel = 2;
             boost = Config.rocket.megaboost;
-        }
-
-        if(whiplash.Input.mouseButtons[0]) {
+        } else if(whiplash.Input.mouseButtons[0]) {
             rocket.boostLevel = 1;
             boost = Config.rocket.boost;
         }

@@ -23,6 +23,7 @@ class LandingPlatformSystem extends ListIteratingSystem<LandingPlatformNode> {
     public override function addToEngine(engine:Engine) {
         super.addToEngine(engine);
         this.engine = engine;
+        rocketNode = engine.getNodeList(RocketNode).head;
     }
 
     public override function removeFromEngine(engine:Engine) {
@@ -30,14 +31,6 @@ class LandingPlatformSystem extends ListIteratingSystem<LandingPlatformNode> {
     }
 
     private function updateNode(node:LandingPlatformNode, dt:Float):Void {
-        if(rocketNode == null) {
-            rocketNode = engine.getNodeList(RocketNode).head;
-
-            if(rocketNode == null) {
-                return;
-            }
-        }
-
         var transform = node.transform;
         var rocketTransform = rocketNode.transform;
         var rocketObject = rocketNode.object;
@@ -53,8 +46,14 @@ class LandingPlatformSystem extends ListIteratingSystem<LandingPlatformNode> {
                 var speed = rocketObject.velocity.getLength();
 
                 if(speed < game.Config.landing.maxSpeed) {
-                    trace("Won!");
+                    node.entity.add(new Landing(rocketNode));
+                    Game.instance.changeIngameState("landing");
+                    trace("Landing!");
+                } else {
+                    trace("Too quick : " + speed);
                 }
+            } else {
+                trace("Too much rotation difference : " + difference);
             }
         }
     }
