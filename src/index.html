@@ -2,62 +2,95 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Moonlander</title>
-  <!-- <script src="http://localhost:35729/livereload.js"></script> -->
-  <!-- <script src="../deps/whiplash/deps/phaser.min.js"></script> -->
-  <script src="../deps/whiplash/deps/phaser.js"></script>
-  <script src="../deps/whiplash/deps/jquery-3.3.1.min.js"></script>
-  <script src="../deps/whiplash/deps/dat.gui.min.js"></script>
-  <script src="../deps/whiplash/deps/fontfaceobserver.js"></script>
+<meta charset="utf-8" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Moonlander</title>
+<link rel="stylesheet" href="../build/styles/hud.css">
+<link rel="stylesheet" href="../build/styles/general.css">
+<!-- <script src="http://localhost:35729/livereload.js"></script> -->
+<!-- <script src="../deps/whiplash/deps/phaser.min.js"></script> -->
+<script src="../deps/whiplash/deps/phaser.js"></script>
+<script src="../deps/whiplash/deps/jquery-3.3.1.min.js"></script>
+<script src="../deps/whiplash/deps/dat.gui.min.js"></script>
+<script src="../deps/whiplash/deps/fontfaceobserver.js"></script>
 
-  <style>
-    .root,
-    .pages {
-      width: 1280px;
-      height: 720px;
-      position: absolute;
-      left: 0;
-      top: 0;
-    }
+<style>
+	.root,
+	.pages {
+	width: 1280px;
+	height: 720px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	overflow:hidden;
+	}
 
-    .pages>div {
-      color: white;
-      position: absolute;
-      display: none;
-      height: 100%;
-      width: 100%;
-      top: 0;
-      left: 0;
-    }
+	.pages>div {
+	color: white;
+	position: absolute;
+	display: none;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	}
 
-    .background {
-      position: absolute;
-      left:0;
-      top:0;
-      width: 1280px;
-      height: 720px;
-      background-image: url(../data/gui/background.png);
-      background-size: cover;
-      z-index: -1;
-    }
-  </style>
+	.background {
+	position: absolute;
+	left:0;
+	top:0;
+	width: 1280px;
+	height: 720px;
+	background-image: url(../data/gui/background.png);
+	background-size: cover;
+	z-index: -1;
+	}
+</style>
 </head>
 
 <body>
-  <div class="background"></div>
-  <div class="root">
-    <div class="pages">
-      <div class="hud">
-        HUD
-      </div>
-      <div class="win">
-        WIN
-      </div>
-    </div>
-  </div>
-  <script src="../build/generated.js"></script>
+	<div class="background"></div>
+	<div class="root">
+		<div class="pages">
+			<div class="hud">
+				<div class="top">
+					<div class="infoBloc-1">
+						<div class="life">
+							<img src="../data/ui/hud/icon_life.svg">
+							<p>5</p>
+						</div>
+						<div class="timer">
+							<img src="../data/ui/hud/icon_timer.svg">
+							<p>1:27</p>
+						</div>
+					</div>
+					<div class="infoBloc-2">
+						<div class="levelNumber">
+							<img src="../data/ui/hud/icon_level.svg">
+							<p>4</p>
+						</div>
+					</div>
+					<div class="infoBloc-3">
+						<div class="buttonPause">
+							<img src="../data/ui/hud/button_pause.svg">
+						</div>
+					</div>
+				</div>
+
+				<div class="bottom">
+					<div class="infoBloc-1">
+						<div class="buttonBooster">
+							<img src="../data/ui/hud/button_booster_off.svg">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="win">
+				WIN
+			</div>
+		</div>
+	</div>
+<script src="../build/generated.js"></script>
 </body>
 
 </html>
