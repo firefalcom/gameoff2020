@@ -41,7 +41,7 @@ class LandingPlatformSystem extends ListIteratingSystem<LandingPlatformNode> {
             var angle = (transform.rotation - 90) * Math.PI / 180;
             var v = Vector2.getRotatedVector(new Vector2(1, 0), -angle);
             var point = transform.position + v;
-            var axisDistance = Line.distance(new Line(transform.position, point), rocketTransform.position);
+            var axisDistance = Line.getDistance(new Line(transform.position, point), rocketTransform.position);
 
             if(axisDistance < game.Config.landing.distanceToAxis) {
                 var a = rocketTransform.rotation;
