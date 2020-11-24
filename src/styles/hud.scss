@@ -1,0 +1,120 @@
+// -------------
+// hud parameters
+// -------------
+
+$hud_margin:2.5%;
+// $icon_size:100%; // Not used yet
+// $text_size:100%; // Not used yet
+
+
+// -------------
+// hud styles
+// -------------
+
+
+.hud{
+    p{
+        margin:0;
+        font-family:"bungee";
+    }
+}
+
+// BLOC TOP
+.top{
+    width:calc(100% - 2 * #{$hud_margin});
+    margin:$hud_margin;
+    position:relative;
+    
+    [class^=infoBloc]{
+        position: absolute;
+        max-width:300px;
+    }
+
+    .infoBloc-1{
+        top:0;
+        left:0;
+        display:flex;
+        height:27px;
+
+        .life{
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .life .imgLife{
+            background: url("../../data/ui/hud/icon_life.svg") center no-repeat;
+            width:12.17px;
+            height:37px;
+        }
+        .life p{
+            margin:0 30px 0 15px;
+            color:#07ef00;
+            font-size: 0.95em;
+        }
+
+        .timer{
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .timer .imgTimer{
+            background: url("../../data/ui/hud/icon_timer.svg") center no-repeat;
+            width:20px;
+            height:20px;
+        }
+        .timer p{
+            margin:0 15px;
+            color:#07ef00;
+            font-size: 0.95em;
+        }
+    }
+
+    .infoBloc-2{
+        left:0;
+        right:0;
+        margin:calc(#{-$hud_margin} - 0.2%) auto 0 auto;
+        text-align: center;
+
+        .levelNumber .imgLevelNumber{
+            background: url("../../data/ui/hud/icon_level.svg") center no-repeat;
+            width:135px;
+            height:45.66px;
+            margin:0 auto;
+        }
+        .levelNumber p{
+            margin-top:-55px;
+            color:#036000;
+            font-size: 1.5em;
+        }
+    }
+
+    .infoBloc-3{
+        top:0;
+        right:0;
+
+        .buttonPause{
+            display: flex;
+            align-items: center;
+        }
+        .buttonPause .imgButtonPause{
+            background: url("../../data/ui/hud/button_pause.svg") center no-repeat;
+            width:19px;
+            height:20px;
+        }
+    }
+}
+
+.bottom{
+    position: absolute;
+    bottom:0;
+    margin:$hud_margin;
+    .infoBloc-1{
+
+        .imgButtonBooster{
+            background: url("../../data/ui/hud/button_booster_off.svg") center no-repeat; // When enabled use the file "button_booster_on.svg"
+            width:100px;
+            height:100px;
+        }
+    }
+}

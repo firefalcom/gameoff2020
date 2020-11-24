@@ -9,5 +9,5 @@ packed-*
 .DS_Store
 /retail
 /*.zip
-
+deps/dart-sass
 
