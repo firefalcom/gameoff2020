@@ -1,6 +1,14 @@
 VERSION=0.0.1
 
-compile:
+SCSS_FILES := $(shell find src/styles -type f -name '*.scss')
+CSS_FILES := $(SCSS_FILES:.scss=.css)
+
+%.css: %.scss
+	sass $< ./build/styles/$(shell basename $(<:.scss=.css))
+
+css: $(CSS_FILES)
+
+compile: css
 	haxe build.hxml -D version=$(VERSION) -D js-source-map
 
 retail: compile
