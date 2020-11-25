@@ -23,7 +23,9 @@
     }
 
     .LevelNumber{
+        position:relative;
         display:inline-block;
+        top:-5px;
         margin:0;
         color:#05a700;
         font-size: 1.5em;
@@ -34,37 +36,18 @@
         color:#07ef00;
     }
 
-    .star{
+    /* STARS */
+    .starsArea{
         position:relative;
-        ul{
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            margin:0 0 -90px 0;
-            padding:0 60px;
-        }
-        li{
-            background:url("../../data/ui/star-won.png") center no-repeat;
-            background-size: 100%;
-            list-style: none;
-            width:75px;
-            height:75px;
-        }
-        li:nth-child(1){
-            opacity:1;
-        }
-        li:nth-child(2){
-            width:90px;
-            height:90px;
-            opacity:1;
-        }
-        li:nth-child(3){
-            opacity:0;
-        }
+        height:90px;
+        width:100%;
     }
+    .star, .starSlot{
+        position:absolute;
+        width:100%;
 
-    .starSlot{
         ul{
+            position:relative;
             display: flex;
             justify-content: space-around;
             align-items: center;
@@ -72,9 +55,6 @@
             padding:0 60px;
         }
         li{
-            background:url("../../data/ui/star-slot.png") center no-repeat;
-            background-size: 100%;
-            list-style: none;
             width:75px;
             height:75px;
         }
@@ -83,10 +63,31 @@
             height:90px;
         }
     }
+    .star{
+        li{
+            background:url("../../data/ui/star-won.png") center no-repeat;
+            background-size: 100%;
+        }
+        li:nth-child(1){
+            opacity:1;
+        }
+        li:nth-child(2){
+            opacity:1;
+        }
+        li:nth-child(3){
+            opacity:0;
+        }
+    }
+    .starSlot{
+        li{
+            background:url("../../data/ui/star-slot.png") center no-repeat;
+            background-size: 100%;
+        }
+    }
 
+    /* DATA */
     .gameData{
         margin:20px 20% 0 20%;
-        // background-color: red;
 
         [class^=line]{
             display: flex;
@@ -102,6 +103,8 @@
             line-height: 0;
         }
     }
+
+    /* BUTTONS */
     .buttons{
         margin-top: 30px;
         p{
