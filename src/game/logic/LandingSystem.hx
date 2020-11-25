@@ -37,6 +37,10 @@ class LandingSystem extends ListIteratingSystem<LandingNode> {
 
         rocketTransform.rotation = whiplash.tween.FloatTween.get(startTransform.rotation, node.transform.rotation, EaseOut, ratio);
         rocketTransform.position = whiplash.tween.Vector2Tween.get(startTransform.position, node.landing.finalRocketPosition, EaseOut, ratio);
+
+        if(ratio > 1) {
+            Game.instance.changeIngameState("winning");
+        }
     }
 
     private function onNodeAdded(node:LandingNode) {
