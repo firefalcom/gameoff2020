@@ -2,153 +2,160 @@
 <html lang="en">
 
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<title>Moonlander</title>
-<link rel="stylesheet" href="../build/styles/general.css">
-<link rel="stylesheet" href="../build/styles/winScreen.css">
-<link rel="stylesheet" href="../build/styles/hud.css">
-<!-- <script src="http://localhost:35729/livereload.js"></script> -->
-<!-- <script src="../deps/whiplash/deps/phaser.min.js"></script> -->
-<script src="../deps/whiplash/deps/phaser.js"></script>
-<script src="../deps/whiplash/deps/jquery-3.3.1.min.js"></script>
-<script src="../deps/whiplash/deps/dat.gui.min.js"></script>
-<script src="../deps/whiplash/deps/fontfaceobserver.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Moonlander</title>
+  <link rel="stylesheet" href="../build/styles/general.css">
+  <link rel="stylesheet" href="../build/styles/winScreen.css">
+  <link rel="stylesheet" href="../build/styles/hud.css">
+  <!-- <script src="http://localhost:35729/livereload.js"></script> -->
+  <!-- <script src="../deps/whiplash/deps/phaser.min.js"></script> -->
+  <script src="../deps/whiplash/deps/phaser.js"></script>
+  <script src="../deps/whiplash/deps/jquery-3.3.1.min.js"></script>
+  <script src="../deps/whiplash/deps/dat.gui.min.js"></script>
+  <script src="../deps/whiplash/deps/fontfaceobserver.js"></script>
 
-<style>
-	.root,
-	.pages {
-	width: 1280px;
-	height: 720px;
-	position: absolute;
-	left: 0;
-	top: 0;
-	overflow:hidden;
-	user-select: none;
-	}
+  <style>
+    .root,
+    .pages {
+      width: 1280px;
+      height: 720px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      overflow: hidden;
+      user-select: none;
+    }
 
-	.pages>div {
-	color: white;
-	position: absolute;
-	display: none;
-	height: 100%;
-	width: 100%;
-	top: 0;
-	left: 0;
-	}
+    .pages>div {
+      color: white;
+      position: absolute;
+      display: none;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+    }
 
-	li{
-		list-style: none;
-	}
+    li {
+      list-style: none;
+    }
 
-	.background {
-	position: absolute;
-	left:0;
-	top:0;
-	width: 1280px;
-	height: 720px;
-	background-image: url("../data/gui/background.png");
-	background-size: cover;
-	z-index: -1;
-	}
-</style>
+    .background {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1280px;
+      height: 720px;
+      background-image: url("../data/gui/background.png");
+      background-size: cover;
+      z-index: -1;
+    }
+  </style>
 </head>
 
 <body>
-	<div class="background"></div>
-	<div class="root">
-		<div class="pages">
+  <div class="background"></div>
+  <div class="root">
+    <div class="pages">
+      <div class="mainMenu">
+        Main Menu
+      </div>
 
-			<!-- HUD -->
-			<div class="hud">
-				<div class="top">
-					<div class="infoBloc-1">
-						<div class="life">
-							<div class="imgLife"></div>
-							<p>5</p>
-						</div>
-						<div class="timer">
-							<div class="imgTimer"></div>
-							<p>1:27</p>
-						</div>
-					</div>
-					<div class="infoBloc-2">
-						<div class="levelNumber">
-							<div class="imgLevelNumber"></div>
-							<p>4</p>
-						</div>
-					</div>
-					<div class="infoBloc-3">
-						<div class="buttonPause">
-							<div class="imgButtonPause"></div>
-						</div>
-					</div>
-				</div>
+      <div class="levelMenu">
+        Level Menu
+      </div>
 
-				<div class="bottom">
-					<div class="infoBloc-1">
-						<div class="buttonBooster">
-							<div class="imgButtonBooster"></div>
-						</div>
-					</div>
-				</div>
-			</div>
+      <!-- HUD -->
+      <div class="hud">
+        <div class="top">
+          <div class="infoBloc-1">
+            <div class="life">
+              <div class="imgLife"></div>
+              <p>5</p>
+            </div>
+            <div class="timer">
+              <div class="imgTimer"></div>
+              <p>1:27</p>
+            </div>
+          </div>
+          <div class="infoBloc-2">
+            <div class="levelNumber">
+              <div class="imgLevelNumber"></div>
+              <p>4</p>
+            </div>
+          </div>
+          <div class="infoBloc-3">
+            <div class="buttonPause">
+              <div class="imgButtonPause"></div>
+            </div>
+          </div>
+        </div>
 
-			<!-- WIN SCREEN -->
-			<div class="win">
-				<h1>YOU WIN</h1>
-				<div class="window">
-					<p class="LevelNumber">45</p>
-					<div class="dataContent">
-						<p class="blocTitle">LEVEL COMPLETED</p>
-						<div class="star">
-							<ul>
-								<li></li>
-								<li></li>
-								<li></li>
-							</ul>
-						</div>
-						<div class="starSlot">
-							<ul>
-								<li></li>
-								<li></li>
-								<li></li>
-							</ul>
-						</div>
-						<div class="gameData">
-							<div class="lineTime">
-								<p>Time</p>
-								<p>1:35</p>
-							</div>
-							<div class="lineLife">
-								<p>Rocket destroyed</p>
-								<p>3</p>
-							</div>
-							<div class="lineScore">
-								<p>Score</p>
-								<p>15879</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="buttons">
-					<ul>
-						<li>
-							<p>Retry</p>
-						</li>
-						<li>
-							<p style="opacity:0;">wip</p>
-							<div class="imgLvlProg"></div>
-						</li>
-						<li>
-							<p>Next</p>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-<script src="../build/generated.js"></script>
+        <div class="bottom">
+          <div class="infoBloc-1">
+            <div class="buttonBooster">
+              <div class="imgButtonBooster"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WIN SCREEN -->
+      <div class="win">
+        <h1>YOU WIN</h1>
+        <div class="window">
+          <p class="LevelNumber">45</p>
+          <div class="dataContent">
+            <p class="blocTitle">LEVEL COMPLETED</p>
+            <div class="star">
+              <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+            <div class="starSlot">
+              <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+            <div class="gameData">
+              <div class="lineTime">
+                <p>Time</p>
+                <p>1:35</p>
+              </div>
+              <div class="lineLife">
+                <p>Rocket destroyed</p>
+                <p>3</p>
+              </div>
+              <div class="lineScore">
+                <p>Score</p>
+                <p>15879</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="buttons">
+          <ul>
+            <li>
+              <p>Retry</p>
+            </li>
+            <li>
+              <p style="opacity:0;">wip</p>
+              <div class="imgLvlProg"></div>
+            </li>
+            <li>
+              <p>Next</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../build/generated.js"></script>
 </body>
 
 </html>

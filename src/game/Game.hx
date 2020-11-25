@@ -51,9 +51,13 @@ class Game extends whiplash.Application {
 
         var engine = whiplash.Lib.ashEngine;
 
+        var mainMenuState = createState("mainMenu");
+        mainMenuState.addInstance(new game.logic.MainMenuSystem());
+
+        var levelMenuState = createState("levelMenu");
+        levelMenuState.addInstance(new game.logic.LevelMenuSystem());
 
         var ingameState = createState("ingame");
-
 
         ingameState.addInstance(new game.logic.ObjectSystem()).withPriority(2);
         ingameState.addInstance(new game.logic.AttachSystem()).withPriority(2);
@@ -83,6 +87,8 @@ class Game extends whiplash.Application {
         {
             createUiState("hud", ".hud");
             createUiState("win", ".win");
+            createUiState("mainMenu", ".mainMenu");
+            createUiState("levelMenu", ".levelMenu");
         }
 
         super.create();
@@ -90,6 +96,10 @@ class Game extends whiplash.Application {
     }
 
     override function start() {
+        changeState("mainMenu");
+    }
+
+    public function startGame() {
         var engine = whiplash.Lib.ashEngine;
         var e = Factory.createCamera();
         camera = e.get(whiplash.phaser.Camera);
