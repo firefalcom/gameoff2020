@@ -116,7 +116,7 @@ class Game extends whiplash.Application {
         }
         changeState("ingame");
         changeIngameState("preparing");
-        changeIngameState("winning");
+        // changeIngameState("winning");
     }
 
     public function getMouseWorldPosition():Vector2 {
