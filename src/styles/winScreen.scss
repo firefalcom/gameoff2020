@@ -29,11 +29,14 @@
     }
 
     .LevelNumber{
-        display:inline-block;
-        top:-5px;
+        display:block;
+        position:absolute;
         margin:0;
         color:#05a700;
         font-size: 1.5em;
+        transform:translate(-50%, -50%);
+        top:5%;
+        left:50%;
     }
     .blocTitle{
         margin:0;
@@ -128,13 +131,16 @@
             margin:0 auto;
         }
         li{
-        position: relative;
-        width: 110px;
-        height:45px;
-        border-image: url('../../data/ui/button_off.svg') stretch;  // When mouse hover use "button_on.svg" and change color text/icon by #023c00
-        border-image-slice: 35% fill;
-        border-image-width: 50px;
-        cursor: pointer;
+            position: relative;
+            width: 110px;
+            height:45px;
+            border-image: url('../../data/ui/button_off.svg') stretch;  // When mouse hover use "button_on.svg" and change color text/icon by #023c00
+            border-image-slice: 35% fill;
+            border-image-width: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         li:nth-child(2){
             width:65px;
