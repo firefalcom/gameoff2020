@@ -6,6 +6,7 @@
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <title>Moonlander</title>
 <link rel="stylesheet" href="../build/styles/general.css">
+<link rel="stylesheet" href="../build/styles/winScreen.css">
 <link rel="stylesheet" href="../build/styles/hud.css">
 <!-- <script src="http://localhost:35729/livereload.js"></script> -->
 <!-- <script src="../deps/whiplash/deps/phaser.min.js"></script> -->
@@ -23,6 +24,7 @@
 	left: 0;
 	top: 0;
 	overflow:hidden;
+	user-select: none;
 	}
 
 	.pages>div {
@@ -35,13 +37,17 @@
 	left: 0;
 	}
 
+	li{
+		list-style: none;
+	}
+
 	.background {
 	position: absolute;
 	left:0;
 	top:0;
 	width: 1280px;
 	height: 720px;
-	background-image: url(../data/gui/background.png);
+	background-image: url("../data/gui/background.png");
 	background-size: cover;
 	z-index: -1;
 	}
@@ -52,6 +58,8 @@
 	<div class="background"></div>
 	<div class="root">
 		<div class="pages">
+
+			<!-- HUD -->
 			<div class="hud">
 				<div class="top">
 					<div class="infoBloc-1">
@@ -85,8 +93,58 @@
 					</div>
 				</div>
 			</div>
+
+			<!-- WIN SCREEN -->
 			<div class="win">
-				WIN
+				<h1>YOU WIN</h1>
+				<div class="window">
+					<p class="LevelNumber">45</p>
+					<div class="dataContent">
+						<p class="blocTitle">LEVEL COMPLETED</p>
+						<div class="star">
+							<ul>
+								<li></li>
+								<li></li>
+								<li></li>
+							</ul>
+						</div>
+						<div class="starSlot">
+							<ul>
+								<li></li>
+								<li></li>
+								<li></li>
+							</ul>
+						</div>
+						<div class="gameData">
+							<div class="lineTime">
+								<p>Time</p>
+								<p>1:35</p>
+							</div>
+							<div class="lineLife">
+								<p>Rocket destroyed</p>
+								<p>3</p>
+							</div>
+							<div class="lineScore">
+								<p>Score</p>
+								<p>15879</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="buttons">
+					<ul>
+						<li>
+							<p>Retry</p>
+						</li>
+						<li>
+							<p style="opacity:0;">wip</p>
+							<div class="imgLvlProg"></div>
+						</li>
+						<li>
+							<p>Next</p>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>

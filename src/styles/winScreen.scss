@@ -1,0 +1,139 @@
+.win{
+    background-color: rgba($color: #000000, $alpha: 0.4);
+    text-align: center;
+
+    h1, p{
+        font-family: "bungee";
+    }
+    h1{
+        position:relative;
+        color:#07ef00;
+        font-size: 4.5em;
+        text-align: center;
+        margin: 0 0 10px;
+    }
+    .window{
+        position: relative;
+        width:400px;
+        height:410px;
+        margin:0 auto;
+        border-image: url('../../data/ui/panel/panel_01.svg') stretch;
+        border-image-slice: 49.5% fill;
+        border-image-width: 250px;
+    }
+
+    .LevelNumber{
+        display:inline-block;
+        margin:-5px 0 0 0;
+        color:#05a700;
+        font-size: 1.5em;
+    }
+    .blocTitle{
+        font-size:1.8em;
+        margin:0 0 5px;
+        color:#07ef00;
+    }
+
+    .star{
+        position:relative;
+        ul{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin:0 0 -90px 0;
+            padding:0 60px;
+        }
+        li{
+            background:url("../../data/ui/star-won.png") center no-repeat;
+            background-size: 100%;
+            list-style: none;
+            width:75px;
+            height:75px;
+        }
+        li:nth-child(1){
+            opacity:1;
+        }
+        li:nth-child(2){
+            width:90px;
+            height:90px;
+            opacity:1;
+        }
+        li:nth-child(3){
+            opacity:0;
+        }
+    }
+
+    .starSlot{
+        ul{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin:0;
+            padding:0 60px;
+        }
+        li{
+            background:url("../../data/ui/star-slot.png") center no-repeat;
+            background-size: 100%;
+            list-style: none;
+            width:75px;
+            height:75px;
+        }
+        li:nth-child(2){
+            width:90px;
+            height:90px;
+        }
+    }
+
+    .gameData{
+        margin:20px 20% 0 20%;
+        // background-color: red;
+
+        [class^=line]{
+            display: flex;
+            justify-content: space-between;
+            font-size:0.85em;
+            letter-spacing: 1px;
+        }
+        [class^=line]:last-child{
+            margin:15px 0;
+            font-size:1.5em;
+        }
+        p{
+            margin:-5px 0;
+        }
+    }
+    .buttons{
+        margin-top: 30px;
+        p{
+            margin: 0;
+            padding:0 25px;
+            color:#0ad803;
+            font-size: 1.1em;
+        }
+        ul{
+            padding:0;
+            display: flex;
+            justify-content: space-between;
+            width:25%;
+            margin:0 auto;
+        }
+        li{
+        position: relative;
+        border-image: url('../../data/ui/button_off.svg') stretch;  // When mouse hover use "button_on.svg" and change color text/icon by #023c00
+        border-image-slice: 35% fill;
+        border-image-width: 50px;
+        cursor: pointer;
+        }
+        li:nth-child(2){
+            width:65px;
+        }
+        .imgLvlProg{
+            position: absolute;
+            top:0;
+            width:100%;
+            height:100%;
+            background:url("../../data/ui/icon_levelProgress_off.svg") center no-repeat; // When mouse hover use "icon_levelProgress_on"
+            background-size: 40%;
+        }
+    }
+}
