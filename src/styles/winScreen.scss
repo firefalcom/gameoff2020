@@ -24,13 +24,13 @@
 
     .LevelNumber{
         display:inline-block;
-        margin:-5px 0 0 0;
+        margin:0;
         color:#05a700;
         font-size: 1.5em;
     }
     .blocTitle{
         font-size:1.8em;
-        margin:0 0 5px;
+        margin:0;
         color:#07ef00;
     }
 
@@ -99,7 +99,7 @@
             font-size:1.5em;
         }
         p{
-            margin:-5px 0;
+            line-height: 0;
         }
     }
     .buttons{
