@@ -6,24 +6,29 @@
         font-family: "bungee";
     }
     h1{
-        position:relative;
         color:#07ef00;
         font-size: 4.5em;
         text-align: center;
-        margin: 0 0 10px;
+        margin: 0 auto;
+    }
+
+    h1, .window, .LevelNumber, .blocTitle, .starsArea, .gameData, .buttons, .buttons p{
+        position: absolute;
+        left:0;
+        right:0;
+        margin:0 auto;
     }
     .window{
-        position: relative;
         width:400px;
         height:410px;
         margin:0 auto;
+        bottom:17.5%;
         border-image: url('../../data/ui/panel/panel_01.svg') stretch;
         border-image-slice: 49.5% fill;
         border-image-width: 250px;
     }
 
     .LevelNumber{
-        position:relative;
         display:inline-block;
         top:-5px;
         margin:0;
@@ -31,16 +36,17 @@
         font-size: 1.5em;
     }
     .blocTitle{
-        font-size:1.8em;
         margin:0;
+        top:12.5%;
+        font-size:1.8em;
         color:#07ef00;
     }
 
     /* STARS */
     .starsArea{
-        position:relative;
         height:90px;
         width:100%;
+        top:32.5%;
     }
     .star, .starSlot{
         position:absolute;
@@ -87,7 +93,9 @@
 
     /* DATA */
     .gameData{
-        margin:20px 20% 0 20%;
+        position: absolute;
+        width:60%;
+        bottom:7%;
 
         [class^=line]{
             display: flex;
@@ -106,10 +114,9 @@
 
     /* BUTTONS */
     .buttons{
-        margin-top: 30px;
+        bottom:5%;
         p{
             margin: 0;
-            padding:0 25px;
             color:#0ad803;
             font-size: 1.1em;
         }
@@ -122,6 +129,8 @@
         }
         li{
         position: relative;
+        width: 110px;
+        height:45px;
         border-image: url('../../data/ui/button_off.svg') stretch;  // When mouse hover use "button_on.svg" and change color text/icon by #023c00
         border-image-slice: 35% fill;
         border-image-width: 50px;
