@@ -4,11 +4,14 @@ import ash.core.*;
 import whiplash.phaser.*;
 import whiplash.math.Vector2;
 
-class WinningSystem extends ash.core.System {
+class WinningSystem extends whiplash.UiSystem {
     private var engine:Engine;
 
     public function new() {
         super();
+        set(".win .retry", "click", () -> {
+            Game.instance.startGame();
+        });
     }
 
     public override function addToEngine(engine:Engine) {

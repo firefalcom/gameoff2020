@@ -4,11 +4,14 @@ import ash.core.*;
 import whiplash.phaser.*;
 import whiplash.math.Vector2;
 
-class MainMenuSystem extends ash.core.System {
+class MainMenuSystem extends whiplash.UiSystem {
     private var engine:Engine;
 
     public function new() {
         super();
+        set(".mainMenu .play", "click", () -> {
+            Game.instance.changeState("levelMenu");
+        });
     }
 
     public override function addToEngine(engine:Engine) {
