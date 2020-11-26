@@ -8,8 +8,7 @@
     h1{
         color:#07ef00;
         font-size: 4.5em;
-        text-align: center;
-        margin: 0 auto;
+        top:7%;
     }
 
     h1, .window, .LevelNumber, .blocTitle, .starsArea, .gameData, .buttons, .buttons p{
@@ -40,7 +39,7 @@
     }
     .blocTitle{
         margin:0;
-        top:12.5%;
+        top:20%;
         font-size:1.8em;
         color:#07ef00;
     }
@@ -104,14 +103,16 @@
             display: flex;
             justify-content: space-between;
             font-size:0.85em;
-            letter-spacing: 1px;
+            margin:10% 0;
+
         }
         [class^=line]:last-child{
-            margin:15px 0;
+            margin-top:18%;
             font-size:1.5em;
         }
         p{
-            line-height: 0;
+            margin:0;
+            letter-spacing: 1px;
         }
     }
 

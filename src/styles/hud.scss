@@ -91,10 +91,9 @@ $hud_margin:2.5%;
         }
         .levelNumber p{
             position: absolute;
-            top:-10px;
-            left:0;
-            margin: 0 auto;
-            right:0;
+            top:50%;
+            left:50%;
+            transform: translate(-50%, -50%);
             color:#036000;
             font-size: 1.5em;
         }
