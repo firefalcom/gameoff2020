@@ -7,6 +7,7 @@
   <title>Moonlander</title>
   <link rel="stylesheet" href="../build/styles/general.css">
   <link rel="stylesheet" href="../build/styles/mainMenu.css">
+  <link rel="stylesheet" href="../build/styles/levelMenu.css">
   <link rel="stylesheet" href="../build/styles/winScreen.css">
   <link rel="stylesheet" href="../build/styles/hud.css">
   <!-- <script src="http://localhost:35729/livereload.js"></script> -->
@@ -59,6 +60,8 @@
   <div class="background"></div>
   <div class="root">
     <div class="pages">
+
+      <!-- MAIN MENU -->
       <div class="mainMenu">
         <h1>Moonlander</h1>
         <div class="fullScreenButton"></div>
@@ -67,11 +70,35 @@
           <li><p>Levels</p></li>
           <li><p>Credit</p></li>
         </ul>
-        <div class="FFLogo"></div>
+        <div class="fFLogo"></div>
       </div>
 
+      <!-- LEVEL MENU -->
       <div class="levelMenu">
-        Level Menu
+        <h1>Level</h1>
+        <div class="window">
+          <div class="content">
+            <div class="levelBar">
+              <p>1</p>
+              <div class="starsArea">
+                <div class="stars">
+                  <ul>
+                    <li style="opacity:1;"></li>
+                    <li style="opacity:1;"></li>
+                    <li style="opacity:0;"></li>
+                  </ul>
+                </div>
+                <div class="slot">
+                  <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- HUD -->
@@ -113,7 +140,7 @@
       <div class="win">
         <h1>YOU WIN</h1>
         <div class="window">
-          <p class="LevelNumber">45</p>
+          <p class="levelNumber">45</p>
           <div class="dataContent">
             <p class="blocTitle">LEVEL COMPLETED</p>
             <div class="starsArea">
