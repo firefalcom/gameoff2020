@@ -15,7 +15,7 @@ retail: compile
 	rm -rf retail
 	mkdir -p retail/build
 	rsync -avzm . ./retail -progress --exclude='**/phaser.js' --include='deps/**/*.css' --include='deps/**/*.js' --include='data/**' --include='src/*.css' --include='src/*.js' --exclude='haxe-babylon' --exclude='examples' --include='src/*.html' --include='*/' --include='index.html' --exclude='*'
-	cp build/generated.js retail/build/generated.js
+	cp build/* -rf retail/build/
 
 obfuscate: retail
 	uglifyjs --compress --mangle -- build/generated.js > retail/build/generated.js
