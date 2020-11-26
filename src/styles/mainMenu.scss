@@ -1,8 +1,5 @@
 
 .mainMenu{
-    h1, p{
-        line-height: 0.79em;
-    }
     h1{
         position: absolute;
         margin:0;
@@ -43,15 +40,16 @@
         left:2.6%;
         width:20px;
         height:20px;
-        background: url("../../data/ui/icon_fullScreen.svg") top left no-repeat;
+        background: url("../../data/ui/icon_fullScreen_on.svg") top left no-repeat;
         background-size: 100%;
         cursor:pointer;
     }
+
     .fullScreenButton:hover{
         filter:invert(61%) sepia(93%) saturate(3099%) hue-rotate(78deg) brightness(200%) contrast(122%);
     }
 
-    .FFLogo{
+    .fFLogo{
         position:absolute;
         bottom:4.6%;
         right:2.6%;
