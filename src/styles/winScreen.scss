@@ -6,6 +6,11 @@
         color:#07ef00;
         font-size: 4.5em;
         top:7%;
+
+        animation: 0.6s ease transFromTop;
+        animation-delay: 0.1s;
+        animation-fill-mode: forwards;
+        transform:translateY(-1.5em);
     }
 
     h1, .window, .levelNumber, .blocTitle, .starsArea, .gameData, .buttons, .buttons p{
@@ -22,6 +27,11 @@
         border-image: url('../../data/ui/panel/panel_01.svg') stretch;
         border-image-slice: 49.5% fill;
         border-image-width: 250px;
+
+        animation: 0.6s ease scaleOp;
+        animation-delay: 0.3s;
+        animation-fill-mode: forwards;
+        opacity: 0;
     }
 
     .levelNumber{
@@ -31,7 +41,7 @@
         color:#05a700;
         font-size: 1.5em;
         transform:translate(-50%, -50%);
-        top:5%;
+        top:6%;
         left:50%;
     }
     .blocTitle{
@@ -116,6 +126,11 @@
     /* BUTTONS */
     .buttons{
         bottom:5%;
+
+        animation: 0.6s ease transFromBottom;
+        animation-delay: 0.1s;
+        animation-fill-mode: forwards;
+        transform:translateY(5em);
         p{
             margin: 0;
             color:#0ad803;
@@ -138,7 +153,14 @@
             cursor: pointer;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: center;  
+            border-radius:20px; 
+        }
+        li:hover{
+            background-color: rgba($color: #07ef00, $alpha: 0.2);
+        }
+        li:active{
+            filter:brightness(0.8);
         }
         li:nth-child(2){
             width:65px;
@@ -152,4 +174,33 @@
             background-size: 40%;
         }
     }
+
+    // ANIMATIONS
+    @keyframes scaleOp {
+        0% {
+            transform: scale(0.5);
+            opacity:0;
+        }
+        100% {
+            transform: scale(1);
+            opacity:1;
+        }
+    }
+    @keyframes transFromTop {
+        0% {
+            transform:translateY(-1.5em);
+        }
+        100% {
+            transform:translateY(0);
+        }
+    }
+    @keyframes transFromBottom {
+        0% {
+            transform:translateY(5em);
+        }
+        100% {
+            transform:translateY(0);
+        }
+    }
 }
+
