@@ -2,7 +2,7 @@
 // hud parameters
 // -------------
 
-$hud_margin:2.5%;
+$hud_margin:2.6%;
 // $icon_size:100%; // Not used yet
 // $text_size:100%; // Not used yet
 
@@ -83,20 +83,24 @@ $hud_margin:2.5%;
         margin:calc(#{-$hud_margin} - 0.2%) auto 0 auto;
         text-align: center;
 
+        .levelNumber{
+            transform: translateY(-15px);
+        }
         .levelNumber .imgLevelNumber{
-            background: url("../../data/ui/hud/icon_level.svg") center no-repeat;
-            width:135px;
-            height:45.66px;
+            border-image: url('../../data/ui/button_off.svg') stretch;
+            border-image-slice: 35% fill;
+            border-image-width: 50px;
+            width:60px;
+            height:50px;
             margin:0 auto;
         }
         .levelNumber p{
             position: absolute;
-            top:-10px;
-            left:0;
-            margin: 0 auto;
-            right:0;
-            color:#036000;
-            font-size: 1.5em;
+            top:60%;
+            left:50%;
+            transform: translate(-50%, -50%);
+            color:#07ef00;
+            font-size: 1.2em;
         }
     }
 
@@ -107,6 +111,7 @@ $hud_margin:2.5%;
         .buttonPause{
             display: flex;
             align-items: center;
+            cursor:pointer;
         }
         .buttonPause .imgButtonPause{
             background: url("../../data/ui/hud/button_pause.svg") center no-repeat;
@@ -123,9 +128,13 @@ $hud_margin:2.5%;
     .infoBloc-1{
 
         .imgButtonBooster{
-            background: url("../../data/ui/hud/button_booster_off.svg") center no-repeat; // When enabled use the file "button_booster_on.svg"
+            background: url("../../data/ui/hud/button_booster_off.svg") center no-repeat;
             width:100px;
             height:100px;
+            cursor:pointer;
+        }
+        .imgButtonBooster:active{
+            background: url("../../data/ui/hud/button_booster_on.svg") center no-repeat;
         }
     }
 }
