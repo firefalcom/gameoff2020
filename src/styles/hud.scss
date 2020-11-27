@@ -13,8 +13,8 @@ $hud_margin:2.6%;
 
 
 .hud{
+    cursor: url("../../data/ui/cursor_target.png"), auto;
     pointer-events:none;
-
     p{
         margin:0;
         font-family:"bungee";
@@ -110,9 +110,18 @@ $hud_margin:2.6%;
             right:0;
 
             .buttonPause{
+                padding:0 0 15px 15px;
                 display: flex;
                 align-items: center;
+                transition:all 0.15s ease;
                 cursor:pointer;
+            }
+            .buttonPause:hover{
+                transform: scale(1.2);
+            }
+            .buttonPause:active{
+                transform: scale(1);
+                filter:brightness(75%);
             }
             .buttonPause .imgButtonPause{
                 background: url("../../data/ui/hud/button_pause.svg") center no-repeat;
