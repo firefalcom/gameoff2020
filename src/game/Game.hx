@@ -100,6 +100,7 @@ class Game extends whiplash.Application {
     }
 
     public function startGame() {
+        engine.removeAllEntities();
         var engine = whiplash.Lib.ashEngine;
         var e = Factory.createCamera();
         camera = e.get(whiplash.phaser.Camera);
