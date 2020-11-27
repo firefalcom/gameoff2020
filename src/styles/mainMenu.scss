@@ -40,13 +40,18 @@
         left:2.6%;
         width:20px;
         height:20px;
-        background: url("../../data/ui/icon_fullScreen_on.svg") top left no-repeat;
+        background: url("../../data/ui/icon_fullScreen_on.svg") center no-repeat;
         background-size: 100%;
         cursor:pointer;
+        transition: all ease 0.05s;
     }
 
     .fullScreenButton:hover{
         filter:invert(61%) sepia(93%) saturate(3099%) hue-rotate(78deg) brightness(200%) contrast(122%);
+    }
+    .fullScreenButton:active{
+        background-size: 90%;
+        filter:invert(61%) sepia(93%) saturate(3099%) hue-rotate(78deg) brightness(125%) contrast(122%);
     }
 
     .fFLogo{

@@ -17,124 +17,193 @@ $hud_margin:2.6%;
         margin:0;
         font-family:"bungee";
     }
-}
 
 // BLOC TOP
-.top{
-    width:calc(100% - 2 * #{$hud_margin});
-    margin:$hud_margin;
-    position:relative;
-    
-    [class^=infoBloc]{
-        position: absolute;
-        max-width:300px;
+    .top{
+        width:calc(100% - 2 * #{$hud_margin});
+        margin:$hud_margin;
+        position:relative;
+        
+        [class^=infoBloc]{
+            position: absolute;
+            max-width:300px;
+        }
+
+        .infoBloc-1{
+            position: absolute;
+            top:0;
+            left:0;
+            display:flex;
+            height:27px;
+            width:150px;
+
+            .life, .timer{
+                width:50%;
+            }
+            .life{
+                position: relative;
+                display: flex;
+                align-items: center;
+            }
+            .life .imgLife{
+                background: url("../../data/ui/hud/icon_life.svg") center no-repeat;
+                width:12.17px;
+                height:37px;
+            }
+            .life p{
+                position:absolute;
+                left:25px;
+                color:#07ef00;
+                font-size: 0.95em;
+            }
+
+            .timer{
+                position: relative;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .timer .imgTimer{
+                background: url("../../data/ui/hud/icon_timer.svg") center no-repeat;
+                width:20px;
+                height:20px;
+            }
+            .timer p{
+                position:absolute;
+                left:30px;
+                color:#07ef00;
+                font-size: 0.95em;
+            }
+        }
+
+        .infoBloc-2{
+            left:0;
+            right:0;
+            margin:calc(#{-$hud_margin} - 0.2%) auto 0 auto;
+            text-align: center;
+
+            .levelNumber{
+                transform: translateY(-15px);
+            }
+            .levelNumber .imgLevelNumber{
+                border-image: url('../../data/ui/button_off.svg') stretch;
+                border-image-slice: 35% fill;
+                border-image-width: 50px;
+                width:60px;
+                height:50px;
+                margin:0 auto;
+            }
+            .levelNumber p{
+                position: absolute;
+                top:60%;
+                left:50%;
+                transform: translate(-50%, -50%);
+                color:#07ef00;
+                font-size: 1.2em;
+            }
+        }
+
+        .infoBloc-3{
+            top:0;
+            right:0;
+
+            .buttonPause{
+                display: flex;
+                align-items: center;
+                cursor:pointer;
+            }
+            .buttonPause .imgButtonPause{
+                background: url("../../data/ui/hud/button_pause.svg") center no-repeat;
+                width:19px;
+                height:20px;
+            }
+        }
     }
 
-    .infoBloc-1{
+    .bottom{
         position: absolute;
+        bottom:0;
+        margin:$hud_margin;
+        .infoBloc-1{
+
+            .imgButtonBooster{
+                background: url("../../data/ui/hud/button_booster_off.svg") center no-repeat;
+                width:100px;
+                height:100px;
+                cursor:pointer;
+            }
+            .imgButtonBooster:active{
+                background: url("../../data/ui/hud/button_booster_on.svg") center no-repeat;
+            }
+        }
+    }
+
+    // PAUSE
+    .hudInfo{
+        z-index: 1;
+    }
+    .pauseMenu{
+        position:absolute;
         top:0;
         left:0;
-        display:flex;
-        height:27px;
-        width:150px;
+        width:100%;
+        height:100%;
+        background: rgba($color: #07ef00, $alpha: 0.05);
+        backdrop-filter:brightness(60%);
+        z-index: 2;
 
-        .life, .timer{
-            width:50%;
+        .window{
+            position: absolute;
+            top:50%;
+            transform: translateY(-50%);
+            left: 0;
+            right:0;
+            width:225px;
+            height:240px;
+            margin:0 auto;
+            text-align: center;
+            border-image: url('../../data/ui/panel/panel_01.svg') stretch;
+            border-image-slice: 49.5% fill;
+            border-image-width: 250px;
         }
-        .life{
+        .content{
             position: relative;
-            display: flex;
-            align-items: center;
+            margin:0;
+            height:100%;
         }
-        .life .imgLife{
-            background: url("../../data/ui/hud/icon_life.svg") center no-repeat;
-            width:12.17px;
-            height:37px;
-        }
-        .life p{
-            position:absolute;
-            left:25px;
+        h3{
+            position: absolute;
+            top:50px;
+            left:0;
+            right:0;
+            margin:0 auto;
             color:#07ef00;
-            font-size: 0.95em;
+            font-size: 1.6em;
         }
 
-        .timer{
-            position: relative;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .timer .imgTimer{
-            background: url("../../data/ui/hud/icon_timer.svg") center no-repeat;
-            width:20px;
-            height:20px;
-        }
-        .timer p{
-            position:absolute;
-            left:30px;
-            color:#07ef00;
-            font-size: 0.95em;
-        }
-    }
-
-    .infoBloc-2{
-        left:0;
-        right:0;
-        margin:calc(#{-$hud_margin} - 0.2%) auto 0 auto;
-        text-align: center;
-
-        .levelNumber{
-            transform: translateY(-15px);
-        }
-        .levelNumber .imgLevelNumber{
-            border-image: url('../../data/ui/button_off.svg') stretch;
-            border-image-slice: 35% fill;
-            border-image-width: 50px;
-            width:60px;
-            height:50px;
+        ul{
+            position: absolute;
+            padding:0;
+            top:65%;
+            transform: translateY(-50%);
+            left:0;
+            right:0;
             margin:0 auto;
         }
-        .levelNumber p{
-            position: absolute;
-            top:60%;
-            left:50%;
-            transform: translate(-50%, -50%);
+        li{
+            margin:10% 0;
+            cursor: pointer;
+        }
+        li p{
+            font-size: 0.95em;
+            transition: all ease 0.1s;
+        }
+        li p:hover{
+            letter-spacing: 1px;
             color:#07ef00;
-            font-size: 1.2em;
         }
-    }
-
-    .infoBloc-3{
-        top:0;
-        right:0;
-
-        .buttonPause{
-            display: flex;
-            align-items: center;
-            cursor:pointer;
-        }
-        .buttonPause .imgButtonPause{
-            background: url("../../data/ui/hud/button_pause.svg") center no-repeat;
-            width:19px;
-            height:20px;
-        }
-    }
-}
-
-.bottom{
-    position: absolute;
-    bottom:0;
-    margin:$hud_margin;
-    .infoBloc-1{
-
-        .imgButtonBooster{
-            background: url("../../data/ui/hud/button_booster_off.svg") center no-repeat;
-            width:100px;
-            height:100px;
-            cursor:pointer;
-        }
-        .imgButtonBooster:active{
-            background: url("../../data/ui/hud/button_booster_on.svg") center no-repeat;
+        li p:active{
+            color:#06b900;
         }
     }
 }
