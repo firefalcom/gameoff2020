@@ -124,7 +124,7 @@ class Game extends whiplash.Application {
             e.get(Transform).position.setTo(400, 100);
             engine.addEntity(e);
             var e = Factory.createMoon();
-            e.get(Transform).position.setTo(100, -200);
+            e.get(Transform).position.setTo(100, -150);
             engine.addEntity(e);
             var p = Factory.createLandingPlatform();
             p.get(game.logic.Attach).planet = e;

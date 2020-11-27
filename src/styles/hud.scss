@@ -13,6 +13,8 @@ $hud_margin:2.6%;
 
 
 .hud{
+    pointer-events:none;
+
     p{
         margin:0;
         font-family:"bungee";
