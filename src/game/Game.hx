@@ -31,6 +31,7 @@ class Game extends whiplash.Application {
         };
         super(Config.screen.width, Config.screen.height, ".root", config);
         instance = this;
+        window.addEventListener("resize", resize);
     }
 
     override function preload():Void {
@@ -99,6 +100,7 @@ class Game extends whiplash.Application {
     }
 
     override function start() {
+        resize();
         changeState("mainMenu");
     }
 
@@ -108,9 +110,10 @@ class Game extends whiplash.Application {
         var e = Factory.createCamera();
         camera = e.get(whiplash.phaser.Camera);
         engine.addEntity(e);
+        setupCamera();
         {
             var e = Factory.createEarth();
-            e.get(Transform).position.setTo(300, 300);
+            e.get(Transform).position.setTo(-300, 200);
             engine.addEntity(e);
             var p = Factory.createLauncher();
             p.get(game.logic.Attach).planet = e;
@@ -118,10 +121,10 @@ class Game extends whiplash.Application {
             p.get(game.logic.Attach).angle = 25;
             engine.addEntity(p);
             var e = Factory.createExotic();
-            e.get(Transform).position.setTo(1300, 200);
+            e.get(Transform).position.setTo(400, 100);
             engine.addEntity(e);
             var e = Factory.createMoon();
-            e.get(Transform).position.setTo(900, 400);
+            e.get(Transform).position.setTo(100, -200);
             engine.addEntity(e);
             var p = Factory.createLandingPlatform();
             p.get(game.logic.Attach).planet = e;
@@ -133,8 +136,37 @@ class Game extends whiplash.Application {
         // changeIngameState("winning");
     }
 
+    public function setupCamera() {
+        var e = engine.getEntityByName("camera");
+
+        if(e != null) {
+            e.get(Transform).position.setTo(
+                - Config.screen.width / 2,
+                - Config.screen.height / 2
+            );
+        }
+    }
+
     public function getMouseWorldPosition():Vector2 {
         var mouseCoords = whiplash.Input.mouseCoordinates;
         return camera.getWorldPoint(mouseCoords.x, mouseCoords.y);
+    }
+
+    private function resize() {
+        var canvas:js.html.CanvasElement = whiplash.Lib.phaserGame.canvas;
+
+        if(canvas == null) {
+            return;
+        }
+
+        var width:Int = window.innerWidth;
+        var height:Int = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+        whiplash.Lib.phaserScene.cameras.resize(width, height);
+        whiplash.Lib.phaserGame.scale.resize(width, height);
+        Config.screen.width = width;
+        Config.screen.height = height;
+        setupCamera();
     }
 }
