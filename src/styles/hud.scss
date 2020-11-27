@@ -138,6 +138,46 @@ $hud_margin:2.6%;
         }
     }
 
+    // GAME OVER
+    .gameOver{
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        z-index: 3;
+        .backgroundFilter{
+            position:absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            backdrop-filter:brightness(80%) grayscale(40%);
+            
+            animation: 2s ease opacityIn;
+            animation-fill-mode: forwards;
+            opacity: 0;
+        }
+        h1{
+            position: absolute;
+            width:90%;
+            top:35%;
+            transform: translateY(-50%);
+            left:0;
+            right:0;
+            margin:0 auto;
+            text-align: center;
+            color:#07ef00;
+            font-size: 5em;
+            z-index: 4;
+
+            animation: 1.5s ease scaleOpInOut;
+            animation-delay: 0.25s;
+            animation-fill-mode: forwards;
+            opacity: 0;
+        }
+    }
+
     // PAUSE
     .hudInfo{
         z-index: 1;
@@ -204,6 +244,41 @@ $hud_margin:2.6%;
         }
         li p:active{
             color:#06b900;
+        }
+    }
+
+    // ANIMATIONS
+    @keyframes opacityIn {
+        0% {
+            opacity:0;
+        }
+        25% {
+            opacity:1;
+        }
+        75% {
+            opacity:1;
+        }
+        100% {
+            opacity:0;
+        }
+    }
+
+    @keyframes scaleOpInOut {
+        0% {
+            transform: scale(0.5);
+            opacity:0;
+        }
+        25% {
+            transform: scale(1);
+            opacity:1;
+        }
+        75% {
+            transform: scale(1);
+            opacity:1;
+        }
+        100% {
+            transform: scale(0.5);
+            opacity:0;
         }
     }
 }
