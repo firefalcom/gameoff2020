@@ -41,6 +41,7 @@ class Game extends whiplash.Application {
     }
 
     override function create():Void {
+        whiplash.Lib.phaserGame.scale.stopListeners();
         var scene = whiplash.Lib.phaserScene;
         Factory.load(scene);
 
@@ -82,6 +83,8 @@ class Game extends whiplash.Application {
         var winningState = createIngameState("winning");
         winningState.addInstance(new game.logic.WinningSystem());
 
+        var failingState = createIngameState("failing");
+        failingState.addInstance(new game.logic.FailingSystem());
 
 
         {

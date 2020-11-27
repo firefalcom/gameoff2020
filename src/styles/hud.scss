@@ -140,7 +140,9 @@ $hud_margin:2.6%;
 
     // GAME OVER
     .gameOver{
+        pointer-events: none;
         position:absolute;
+        display:none;
         top:0;
         left:0;
         width:100%;
@@ -183,6 +185,7 @@ $hud_margin:2.6%;
         z-index: 1;
     }
     .pauseMenu{
+        pointer-events:none;
         position:absolute;
         top:0;
         left:0;
@@ -193,6 +196,7 @@ $hud_margin:2.6%;
         z-index: 2;
 
         .window{
+            pointer-events: auto;
             position: absolute;
             top:50%;
             transform: translateY(-50%);

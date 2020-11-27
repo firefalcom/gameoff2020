@@ -39,9 +39,10 @@ class ObjectSystem extends ListIteratingSystem<ObjectNode> {
 
                     if(distance > 0) {
                         if(distance < object.radius + other.object.radius) {
-                            trace("Collision!");
                             engine.removeEntity(node.entity);
-                            Game.instance.changeIngameState("preparing");
+                            if(node.entity.get(Rocket) != null) {
+                                Game.instance.changeIngameState("failing");
+                            }
                         } else {
                             var direction = delta;
                             direction.normalize();

@@ -11,32 +11,29 @@
   <link rel="stylesheet" href="../build/styles/winScreen.css">
   <link rel="stylesheet" href="../build/styles/hud.css">
   <!-- <script src="http://localhost:35729/livereload.js"></script> -->
-  <script src="../deps/whiplash/deps/phaser.min.js"></script>
-  <!-- <script src="../deps/whiplash/deps/phaser.js"></script> -->
+  <!-- <script src="../deps/whiplash/deps/phaser.min.js"></script> -->
+  <script src="../deps/whiplash/deps/phaser.js"></script>
   <script src="../deps/whiplash/deps/jquery-3.3.1.min.js"></script>
   <script src="../deps/whiplash/deps/dat.gui.min.js"></script>
   <script src="../deps/whiplash/deps/fontfaceobserver.js"></script>
 
   <style>
     .root,
-    .pages {
-      width: 1280px;
-      height: 720px;
+    .background,
+    .pages,
+    .pages>div{
+      width: 100%;
+      height: 100%;
       position: absolute;
       left: 0;
       top: 0;
       overflow: hidden;
       user-select: none;
+      color: white;
     }
 
     .pages>div {
-      color: white;
-      position: absolute;
-      display: none;
-      height: 100%;
-      width: 100%;
-      top: 0;
-      left: 0;
+      display:none;
     }
 
     li {
@@ -44,14 +41,13 @@
     }
 
     .background {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 1280px;
-      height: 720px;
       background-image: url("../data/gui/background.png");
       background-size: cover;
       z-index: -1;
+    }
+    canvas {
+      width: 100%;
+      height: 100%;
     }
   </style>
 </head>

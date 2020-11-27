@@ -4,6 +4,8 @@ import ash.core.*;
 import whiplash.phaser.*;
 import whiplash.math.Vector2;
 
+import js.Browser.document;
+
 class MainMenuSystem extends whiplash.UiSystem {
     private var engine:Engine;
 
@@ -11,6 +13,13 @@ class MainMenuSystem extends whiplash.UiSystem {
         super();
         set(".mainMenu .play", "click", () -> {
             Game.instance.changeState("levelMenu");
+        });
+        set(".mainMenu .fullScreenButton", "click", () -> {
+            if(document.fullscreenElement == null) {
+                document.body.requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
         });
     }
 
