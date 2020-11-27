@@ -24,14 +24,36 @@
         margin:35px 0;
         cursor:pointer;
     }
-    li:last-child{
-        margin-top:70px;
-    }
     li p{
         display: inline-block;
         margin:0;
-        font-size: 170%;
         
+    }
+    .play{
+        padding:20px 40px;
+        border-image: url('../../data/ui/button_menu.svg') stretch;
+        border-image-slice: 49.9% fill;
+        border-image-width: 20px;
+        color:#07ef00;
+        font-size: 2.25em;
+        border-radius:30px;
+        transform: rotate(0deg);
+        transition: all 0.25s ease;
+
+        animation: 2s ease tremb;
+        animation-delay: 1s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+
+    }
+    .play:hover{
+        background-color:rgba(7, 239, 0, 0.2);
+        transform: rotate(0deg);
+        animation-iteration-count: 0;
+    }
+    .play:active{
+        filter:brightness(70%);
+        font-size: 2em;
     }
 
     .fullScreenButton{
@@ -62,5 +84,20 @@
         width:200px;
         background: url("../../data/ui/firefalcom_logo.svg") bottom no-repeat;
         background-size: 100%;
+    }
+
+    @keyframes tremb {
+        0% {
+            transform: rotate(0deg);
+        }
+        5% {
+            transform: rotate(-3deg);
+        }
+        10% {
+            transform: rotate(3deg);
+        }
+        15% {
+            transform: rotate(0deg);
+        }
     }
 }
