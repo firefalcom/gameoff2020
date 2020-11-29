@@ -60,7 +60,6 @@ class Factory {
 
     static public function createEarth() {
         var e = new Entity();
-        e.name = "earth";
         e.add(new Transform());
         e.add(new Sprite("earth"));
         e.add(new game.logic.Object(false, 5000, 105));
@@ -83,6 +82,16 @@ class Factory {
         e.add(new Sprite("exotic"));
         e.add(new game.logic.Object(false, 5000, 105));
         e.get(Transform).scale.setTo(0.5, 0.5);
+        return e;
+    }
+
+    static public function createPlanet(type, mass, radius)  {
+        var e = new Entity();
+        e.add(new Transform());
+        e.add(new Sprite(type));
+        e.add(new game.logic.Object(false, mass, radius));
+        var s = (0.5/105) * radius;
+        e.get(Transform).scale.setTo(s, s);
         return e;
     }
 

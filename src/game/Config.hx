@@ -1,6 +1,8 @@
 package game;
 
+#if dev
 @:build(whiplash.Macro.editable())
+#end
 class Config {
     static public var screen = {
         width: 1280,
@@ -24,4 +26,6 @@ class Config {
         rotationTolerance: 15,
         maxSpeed: 150
     }
+
+    static public var levelCount = 5;
 }

@@ -15,7 +15,7 @@ class Game extends whiplash.Application {
 
     public var session:Session;
 
-    private var camera:whiplash.phaser.Camera;
+    public var camera:whiplash.phaser.Camera;
 
     static function main():Void {
         new Game();
@@ -55,17 +55,21 @@ class Game extends whiplash.Application {
 
         var engine = whiplash.Lib.ashEngine;
 
+        engine.addSystem(new game.logic.AttachSystem(), 2);
+
         var mainMenuState = createState("mainMenu");
         mainMenuState.addInstance(new game.logic.MainMenuSystem());
 
         var levelMenuState = createState("levelMenu");
         levelMenuState.addInstance(new game.logic.LevelMenuSystem());
 
+        var levelLoadingState = createState("levelLoading");
+        levelLoadingState.addInstance(new game.logic.LevelLoadingSystem());
+
         var ingameState = createState("ingame");
         ingameState.addInstance(new game.logic.HudSystem()).withPriority(0);
 
         ingameState.addInstance(new game.logic.ObjectSystem()).withPriority(2);
-        ingameState.addInstance(new game.logic.AttachSystem()).withPriority(2);
 
         ingameState.addInstance(new game.display.RocketSystem()).withPriority(1);
         ingameState.addInstance(new game.display.GlowSystem()).withPriority(1);
@@ -110,35 +114,8 @@ class Game extends whiplash.Application {
     public function startGame(levelIndex:Int = 0) {
         session = new Session(levelIndex);
 
-        engine.removeAllEntities();
-        var engine = whiplash.Lib.ashEngine;
-        var e = Factory.createCamera();
-        camera = e.get(whiplash.phaser.Camera);
-        engine.addEntity(e);
-        setupCamera();
-        {
-            var e = Factory.createEarth();
-            e.get(Transform).position.setTo(-300, 200);
-            engine.addEntity(e);
-            var p = Factory.createLauncher();
-            p.get(game.logic.Attach).planet = e;
-            p.get(game.logic.Attach).offset = 30;
-            p.get(game.logic.Attach).angle = 25;
-            engine.addEntity(p);
-            var e = Factory.createExotic();
-            e.get(Transform).position.setTo(400, 100);
-            engine.addEntity(e);
-            var e = Factory.createMoon();
-            e.get(Transform).position.setTo(100, -150);
-            engine.addEntity(e);
-            var p = Factory.createLandingPlatform();
-            p.get(game.logic.Attach).planet = e;
-            p.get(game.logic.Attach).angle = -45;
-            engine.addEntity(p);
-        }
-        changeState("ingame");
-        changeIngameState("preparing");
-        // changeIngameState("winning");
+        changeState("levelLoading");
+
     }
 
     public function setupCamera() {
