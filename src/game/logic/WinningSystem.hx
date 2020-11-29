@@ -12,6 +12,10 @@ class WinningSystem extends whiplash.UiSystem {
         set(".win .retry", "click", () -> {
             Game.instance.startGame();
         });
+        set(".win .levelSelect", "click", () -> {
+            Game.instance.changeState("levelMenu");
+            Game.instance.changeUiState("levelMenu");
+        });
     }
 
     public override function addToEngine(engine:Engine) {

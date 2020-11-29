@@ -13,6 +13,8 @@ import js.Browser.document;
 class Game extends whiplash.Application {
     static public var instance:Game;
 
+    public var session:Session;
+
     private var camera:whiplash.phaser.Camera;
 
     static function main():Void {
@@ -60,6 +62,7 @@ class Game extends whiplash.Application {
         levelMenuState.addInstance(new game.logic.LevelMenuSystem());
 
         var ingameState = createState("ingame");
+        ingameState.addInstance(new game.logic.HudSystem()).withPriority(0);
 
         ingameState.addInstance(new game.logic.ObjectSystem()).withPriority(2);
         ingameState.addInstance(new game.logic.AttachSystem()).withPriority(2);
@@ -104,7 +107,9 @@ class Game extends whiplash.Application {
         changeState("mainMenu");
     }
 
-    public function startGame() {
+    public function startGame(levelIndex:Int = 0) {
+        session = new Session(levelIndex);
+
         engine.removeAllEntities();
         var engine = whiplash.Lib.ashEngine;
         var e = Factory.createCamera();

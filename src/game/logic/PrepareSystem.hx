@@ -25,12 +25,9 @@ class PrepareSystem extends ash.core.System {
         }
         launcherEntity = engine.getEntityByName("launcher");
         engine.getEntityByName("camera").get(Camera).zoomTo(1);
-
-
         rocketEntity.get(Transform).position.copyFrom(launcherEntity.get(Transform).position);
-
         Game.instance.changeIngameState("launching");
-        Game.instance.changeUiState("hud");
+        Game.instance.session.attempts++;
     }
 
     public override function removeFromEngine(engine:Engine) {

@@ -42,6 +42,8 @@ class RocketSystem extends ListIteratingSystem<RocketNode> {
                 }
             }
         }
+
+        Game.instance.session.time += dt;
     }
 
     private function onNodeAdded(node:RocketNode) {
