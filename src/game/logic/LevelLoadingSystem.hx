@@ -15,29 +15,6 @@ class LevelLoadingSystem extends whiplash.UiSystem {
         super.addToEngine(engine);
         this.engine = engine;
         initLoading();
-        {
-            /*            {
-                            var e = Factory.createEarth();
-                            e.get(Transform).position.setTo(-300, 200);
-                            engine.addEntity(e);
-                            var p = Factory.createLauncher();
-                            p.get(game.logic.Attach).planet = e;
-                            p.get(game.logic.Attach).offset = 30;
-                            p.get(game.logic.Attach).angle = 25;
-                            engine.addEntity(p);
-                            var e = Factory.createExotic();
-                            e.get(Transform).position.setTo(400, 100);
-                            engine.addEntity(e);
-                            var e = Factory.createMoon();
-                            e.get(Transform).position.setTo(100, -150);
-                            engine.addEntity(e);
-                            var p = Factory.createLandingPlatform();
-                            p.get(game.logic.Attach).planet = e;
-                            p.get(game.logic.Attach).angle = -45;
-                            engine.addEntity(p);
-                        }
-                        */
-        }
     }
 
     public override function removeFromEngine(engine:Engine) {
@@ -71,17 +48,31 @@ class LevelLoadingSystem extends whiplash.UiSystem {
                 var e = Factory.createPlanet(o.type, getProperty(o.properties, "mass", 1000), radius);
                 e.get(Transform).position.setTo(o.x - mapWidth / 2, o.y - mapHeight / 2);
                 engine.addEntity(e);
-                var launcherProp = getProperty(o.properties, "launcher");
+                {
+                    var launcherValue = getProperty(o.properties, "launcher");
 
-                if(launcherProp != null) {
-                    var p = Factory.createLauncher();
-                    p.get(game.logic.Attach).planet = e;
-                    p.get(game.logic.Attach).offset = 30;
-                    p.get(game.logic.Attach).angle = launcherProp.value;
-                    engine.addEntity(p);
+                    if(launcherValue != null) {
+                        var p = Factory.createLauncher();
+                        p.get(game.logic.Attach).planet = e;
+                        p.get(game.logic.Attach).offset = 30;
+                        p.get(game.logic.Attach).angle = launcherValue;
+                        engine.addEntity(p);
+                    }
+                }
+                {
+                    var landValue = getProperty(o.properties, "land");
+
+                    if(landValue != null) {
+                        var p = Factory.createLandingPlatform();
+                        p.get(game.logic.Attach).planet = e;
+                        p.get(game.logic.Attach).angle = landValue;
+                        engine.addEntity(p);
+                    }
                 }
             }
         }
+
+        onLoadComplete();
     }
 
     private function onLoadComplete() {
@@ -94,7 +85,7 @@ class LevelLoadingSystem extends whiplash.UiSystem {
 
         for(prop in ((props):Array<Dynamic>)) {
             if(prop.name == name) {
-                return prop;
+                return prop.value;
             }
         }
 

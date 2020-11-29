@@ -58,37 +58,11 @@ class Factory {
         return e;
     }
 
-    static public function createEarth() {
-        var e = new Entity();
-        e.add(new Transform());
-        e.add(new Sprite("earth"));
-        e.add(new game.logic.Object(false, 5000, 105));
-        e.get(Transform).scale.setTo(0.5, 0.5);
-        return e;
-    }
-
-    static public function createMoon() {
-        var e = new Entity();
-        e.add(new Transform());
-        e.add(new Sprite("moon"));
-        e.add(new game.logic.Object(false, 1000, 65));
-        e.get(Transform).scale.setTo(0.3, 0.3);
-        return e;
-    }
-
-    static public function createExotic() {
-        var e = new Entity();
-        e.add(new Transform());
-        e.add(new Sprite("exotic"));
-        e.add(new game.logic.Object(false, 5000, 105));
-        e.get(Transform).scale.setTo(0.5, 0.5);
-        return e;
-    }
-
     static public function createPlanet(type, mass, radius)  {
         var e = new Entity();
         e.add(new Transform());
         e.add(new Sprite(type));
+        trace(mass);
         e.add(new game.logic.Object(false, mass, radius));
         var s = (0.5/105) * radius;
         e.get(Transform).scale.setTo(s, s);
