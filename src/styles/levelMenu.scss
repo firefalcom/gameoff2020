@@ -36,6 +36,11 @@
         flex-wrap: wrap;
         align-items: flex-start;
     }
+    .levelBar.locked{
+        pointer-events: none;
+        opacity:0.6;
+        filter:brightness(50%);
+    }
     .levelBar{
         position:relative;
         width:100%;
