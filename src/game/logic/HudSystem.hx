@@ -26,6 +26,16 @@ class HudSystem extends whiplash.UiSystem {
             Game.instance.session.paused = false;
             new JQuery(".hud .pauseMenu").hide();
         });
+        set(".hud .pauseMenu .music", "click", () -> {
+            var manager = whiplash.AudioManager;
+
+            if(manager.music != null) {
+                manager.stopMusic();
+            } else {
+                manager.playMusic("moonlander_theme_loop-warp", 0.2);
+            }
+
+        });
         set(".hud .pauseMenu .fullscreen", "click", () -> {
             if(document.fullscreenElement == null) {
                 document.body.requestFullscreen();

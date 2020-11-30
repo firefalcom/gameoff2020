@@ -17,6 +17,8 @@ class FailingSystem extends whiplash.UiSystem {
         this.engine = engine;
         new js.jquery.JQuery(".hud .gameOver").show();
         timeLeft = 2;
+
+        whiplash.AudioManager.playSound("moonlander_lose_cut");
     }
 
     public override function removeFromEngine(engine:Engine) {

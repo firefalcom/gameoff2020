@@ -114,6 +114,7 @@ class Game extends whiplash.Application {
     override function start() {
         resize();
         changeState("mainMenu");
+        whiplash.AudioManager.playMusic("moonlander_theme_loop-warp", 0.2);
     }
 
     public function startGame(levelIndex:Int = 0) {

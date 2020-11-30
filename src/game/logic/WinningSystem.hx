@@ -63,6 +63,7 @@ class WinningSystem extends whiplash.UiSystem {
                 js.Browser.getLocalStorage().setItem("level-" + session.levelIndex, "" + count);
             }
         }
+        whiplash.AudioManager.playSound("moonlander_win_cut");
     }
 
     public override function removeFromEngine(engine:Engine) {
