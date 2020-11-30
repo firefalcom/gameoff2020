@@ -55,6 +55,7 @@ class HudSystem extends whiplash.UiSystem {
             var userScore = js.Browser.getLocalStorage().getItem("level-0");
 
             if(userScore == null) {
+                new JQuery(".tutoPanel").css("display", "flex");
                 new JQuery(".tutoPanel").show();
             }
         }
@@ -62,6 +63,7 @@ class HudSystem extends whiplash.UiSystem {
 
     public override function removeFromEngine(engine:Engine) {
         super.removeFromEngine(engine);
+        new JQuery(".hud .pauseMenu").hide();
     }
 
     public override function update(dt:Float) {
