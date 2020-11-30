@@ -32,6 +32,9 @@ class LevelLoadingSystem extends whiplash.UiSystem {
         Game.instance.setupCamera();
         var http = new haxe.Http("../data/levels/level" + Game.instance.session.levelIndex + ".json");
         http.onData = parse;
+        http.onError = (e) -> {
+            Game.instance.changeState("mainMenu");
+        };
         http.request();
     }
 
@@ -43,10 +46,9 @@ class LevelLoadingSystem extends whiplash.UiSystem {
 
         for(o in objects) {
             if(o.ellipse) {
-                var l = o.width / 2;
-                var radius = Math.sqrt(l*l*2);
+                var radius = o.width / 2;
                 var e = Factory.createPlanet(o.type, getProperty(o.properties, "mass", 1000), radius);
-                e.get(Transform).position.setTo(o.x - mapWidth / 2, o.y - mapHeight / 2);
+                e.get(Transform).position.setTo(o.x + radius - mapWidth / 2, o.y + radius - mapHeight / 2);
                 engine.addEntity(e);
                 {
                     var launcherValue = getProperty(o.properties, "launcher");
