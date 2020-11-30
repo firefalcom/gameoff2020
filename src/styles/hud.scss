@@ -11,13 +11,20 @@ $hud_margin:2.6%;
 // hud styles
 // -------------
 
-
 .hud{
-    cursor: url("../../data/ui/cursor_target.png"), auto;
     pointer-events:none;
+    cursor: url("../../data/ui/cursor_target.png"), auto;
+
     p{
         margin:0;
         font-family:"bungee";
+    }
+    .hudInfo{
+        position: absolute;
+        top:0;
+        height:100%;
+        width:100%;
+        pointer-events:auto;
     }
 
 // BLOC TOP
@@ -260,6 +267,126 @@ $hud_margin:2.6%;
         li p:active{
             color:#06b900;
         }
+    }
+
+    // Tutorial
+    .tutoPanel{
+        pointer-events: auto;
+        position: absolute;
+        width:100%;
+        height:100%;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        backdrop-filter:brightness(60%);
+        cursor: default;
+
+
+        .window{
+            position: absolute;
+            width:450px;
+            height:480px;
+            border-image: url('../../data/ui/panel/panel_menu.svg') stretch;
+            border-image-slice: 49.5% fill;
+            border-image-width: 250px;
+        }
+
+        h3{
+            position: absolute;
+            margin:0;
+            top:15px;
+            left:0;
+            right:0;
+            text-align: center;
+            color:#036000;
+            font-size: 1.5em;
+        }
+        .content{
+            position: absolute;
+            top:20%;
+            left:0;
+            right:0;
+            margin:0 auto;
+            width:85%;
+            p{
+                line-height: 1.1em;
+            }
+
+
+            .forWin p{
+                color:#07ef00;
+                text-align: center;
+            }
+
+            .controls{
+                width:100%;
+                ul{
+                    margin: 15% 0 0 0;
+                    padding:0;
+                    display: flex;
+                    justify-content: space-between;
+                }
+                li{
+                    position: relative;
+                    height:130px;
+                    width:32%;
+                }
+                li p{
+                    text-align: center;
+                    color:#07ef00;
+                    font-size: 0.85em;
+
+                }
+                .iconImg{
+                    position: absolute;
+                    bottom:0;
+                    width:100%;
+                    height:50px;
+                    
+                }
+                ul li:nth-child(1) .iconImg{
+                    background: url("../../data/ui/tutorial/icon_spacebar.svg") center no-repeat;
+                    background-size: 65%;
+                }
+                ul li:nth-child(2) .iconImg{
+                    background: url("../../data/ui/tutorial/icon_leftClick.svg") center no-repeat;
+                }
+                ul li:nth-child(3) .iconImg{
+                    background: url("../../data/ui/tutorial/icon_moveMouse.svg") center no-repeat;
+                }
+            }
+        }
+        .button{
+            position:absolute;
+            width:90px;
+            height:50px;
+            bottom:8%;
+            left:0;
+            right:0;
+            margin:0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-image: url('../../data/ui/button_menu.svg') stretch;
+            border-image-slice: 49.9% fill;
+            border-image-width: 17px;
+            cursor: pointer;
+            border-radius: 20px;
+            transition:all 0.15s ease;
+        }
+        .button:hover{
+            background-color: rgba($color: #07ef00, $alpha: 0.2);
+            transform: scale(1.1);
+        }
+        .button:active{
+            filter:brightness(0.8);
+            transform: scale(1);
+        }
+        .button p{
+            color:#07ef00;
+            font-size: 1.35em;
+        }
+
     }
 
     // ANIMATIONS
