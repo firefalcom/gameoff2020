@@ -17,6 +17,10 @@ class PrepareSystem extends ash.core.System {
         super.addToEngine(engine);
         this.engine = engine;
         {
+            if(rocketEntity != null) {
+                engine.removeEntity(rocketEntity);
+            }
+
             var e = Factory.createRocket();
             e.get(Transform).position.setTo(-10000, 100);
             e.get(Object).setDynamic(false);

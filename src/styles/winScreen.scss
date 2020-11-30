@@ -83,15 +83,8 @@
         li{
             background:url("../../data/ui/star-won.png") center no-repeat;
             background-size: 100%;
-        }
-        li:nth-child(1){
-            opacity:1;
-        }
-        li:nth-child(2){
-            opacity:1;
-        }
-        li:nth-child(3){
             opacity:0;
+            transition:opacity 0.5s;
         }
     }
     .starSlot{

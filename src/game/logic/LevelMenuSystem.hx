@@ -34,6 +34,22 @@ class LevelMenuSystem extends whiplash.UiSystem {
 
             pageIsGenerated = true;
         }
+
+        {
+            var starContainers = new JQuery(".levelMenu .starsArea");
+
+            for(i in 0...game.Config.levelCount) {
+                var userScore:Int = Std.parseInt(js.Browser.getLocalStorage().getItem("level-" + i));
+
+                if(userScore == null) {
+                    userScore = 0;
+                }
+
+                for(s in 0...3) {
+                    starContainers.eq(i).find(".stars li").eq(s).css("opacity", (userScore > s ? "1" : "0"));
+                }
+            }
+        }
     }
 
     public override function removeFromEngine(engine:Engine) {

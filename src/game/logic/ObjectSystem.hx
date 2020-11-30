@@ -48,10 +48,7 @@ class ObjectSystem extends ListIteratingSystem<ObjectNode> {
                             } else {
                                 if(node.entity.get(Rocket) != null) {
                                     if(other.entity.get(Star) != null) {
-                                        trace("Star pickup!");
                                         engine.removeEntity(other.entity);
-                                        Game.instance.changeIngameState("winning");
-                                        node.object.setDynamic(false);
                                     }
                                 }
                             }
