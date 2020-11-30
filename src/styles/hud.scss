@@ -11,13 +11,20 @@ $hud_margin:2.6%;
 // hud styles
 // -------------
 
-
 .hud{
+    pointer-events:none;
     cursor: url("../../data/ui/cursor_target.png"), auto;
 
     p{
         margin:0;
         font-family:"bungee";
+    }
+    .hudInfo{
+        position: absolute;
+        top:0;
+        height:100%;
+        width:100%;
+        pointer-events:auto;
     }
 
 // BLOC TOP
