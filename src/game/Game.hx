@@ -36,6 +36,11 @@ class Game extends whiplash.Application {
         window.addEventListener("resize", resize);
     }
 
+    override function initPages() {
+        pages = js.uipages.Lib.createGroup(new JQuery(".pages"), "fade", "fade");
+        pages.showPage(".default");
+    }
+
     override function preload():Void {
         untyped whiplash.Lib.phaserGame.device.audio.wav = true; // :HACK: Phaser wav detection is broken on iOS14
         super.preload();
@@ -64,7 +69,7 @@ class Game extends whiplash.Application {
         levelMenuState.addInstance(new game.logic.LevelMenuSystem());
 
         var levelLoadingState = createState("levelLoading");
-        levelLoadingState.addInstance(new game.logic.LevelLoadingSystem());
+        levelLoadingState.addInstance(new game.logic.LevelLoadingSystem()).withPriority(0);
 
         var ingameState = createState("ingame");
         ingameState.addInstance(new game.logic.HudSystem()).withPriority(0);
@@ -76,7 +81,7 @@ class Game extends whiplash.Application {
         // ingameState.addInstance(new game.display.CameraSystem()).withPriority(3);
 
         var preparingState = createIngameState("preparing");
-        preparingState.addInstance(new game.logic.PrepareSystem());
+        preparingState.addInstance(new game.logic.PrepareSystem()).withPriority(1);
 
         var launchingState = createIngameState("launching");
         launchingState.addInstance(new game.logic.LaunchSystem());
@@ -113,9 +118,8 @@ class Game extends whiplash.Application {
 
     public function startGame(levelIndex:Int = 0) {
         session = new Session(levelIndex);
-
+        engine.removeAllEntities();
         changeState("levelLoading");
-
     }
 
     public function setupCamera() {

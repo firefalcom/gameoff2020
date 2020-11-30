@@ -62,7 +62,6 @@ class Factory {
         var e = new Entity();
         e.add(new Transform());
         e.add(new Sprite(type));
-        trace(mass);
         e.add(new game.logic.Object(false, mass, radius));
         var s = (0.5/105) * radius;
         e.get(Transform).scale.setTo(s, s);
@@ -143,6 +142,19 @@ class Factory {
         e.name = "camera";
         e.add(new Transform());
         e.add(new Camera(0, 0, Config.screen.width, Config.screen.height));
+        return e;
+    }
+
+    static public function createStar()  {
+        var e = new Entity();
+        e.add(new Transform());
+        e.add(new Sprite("star"));
+        e.add(new game.logic.Object(false, 1, 32));
+        e.get(game.logic.Object).solid = false;
+        e.add(new game.logic.Star());
+        e.add(new game.display.Glow(null, 1, 0.5));
+        var s = 0.3;
+        e.get(Transform).scale.setTo(s, s);
         return e;
     }
 }

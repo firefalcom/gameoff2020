@@ -33,7 +33,7 @@ class GlowSystem extends ListIteratingSystem<GlowNode> {
 
         var advance = glow.time * glow.speed * Math.PI * 2;
 
-        node.sprite.alpha = (1 + Math.cos(Math.PI + advance)) / 2;
+        node.sprite.alpha = glow.minAlpha + ((1 + Math.cos(Math.PI + advance)) / 2) * (1 - glow.minAlpha);
 
         if(glow.countLeft != null) {
             while(advance >= Math.PI * 2) {

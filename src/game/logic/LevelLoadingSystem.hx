@@ -25,7 +25,6 @@ class LevelLoadingSystem extends whiplash.UiSystem {
     }
 
     private function initLoading() {
-        engine.removeAllEntities();
         var e = Factory.createCamera();
         Game.instance.camera = e.get(whiplash.phaser.Camera);
         engine.addEntity(e);
@@ -68,9 +67,14 @@ class LevelLoadingSystem extends whiplash.UiSystem {
                         var p = Factory.createLandingPlatform();
                         p.get(game.logic.Attach).planet = e;
                         p.get(game.logic.Attach).angle = landValue;
+                        p.get(game.logic.Attach).offset = 5;
                         engine.addEntity(p);
                     }
                 }
+            } else if(o.point) {
+                var e = Factory.createStar();
+                e.get(Transform).position.setTo(o.x - mapWidth / 2, o.y - mapHeight / 2);
+                Game.instance.session.stars.push(e);
             }
         }
 

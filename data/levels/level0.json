@@ -1,4 +1,11 @@
 { "compressionlevel":-1,
+ "editorsettings":
+    {
+     "export":
+        {
+         "target":"."
+        }
+    },
  "height":32,
  "infinite":false,
  "layers":[
@@ -50,8 +57,44 @@
                  "type":"moon",
                  "visible":true,
                  "width":97.9265785609398,
-                 "x":736.902697271814,
-                 "y":608.694953242136
+                 "x":925.257284179612,
+                 "y":499.480949068707
+                }, 
+                {
+                 "height":0,
+                 "id":7,
+                 "name":"",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":701.185563026509,
+                 "y":394.120102017157
+                }, 
+                {
+                 "height":0,
+                 "id":8,
+                 "name":"",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":1120.63065151866,
+                 "y":622.04498029214
+                }, 
+                {
+                 "height":0,
+                 "id":9,
+                 "name":"",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":85.4718293531185,
+                 "y":476.426308060901
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -60,7 +103,7 @@
          "y":0
         }],
  "nextlayerid":3,
- "nextobjectid":7,
+ "nextobjectid":10,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.4.3",

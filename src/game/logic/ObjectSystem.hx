@@ -39,9 +39,21 @@ class ObjectSystem extends ListIteratingSystem<ObjectNode> {
 
                     if(distance > 0) {
                         if(distance < object.radius + other.object.radius) {
-                            engine.removeEntity(node.entity);
-                            if(node.entity.get(Rocket) != null) {
-                                Game.instance.changeIngameState("failing");
+                            if(other.object.solid) {
+                                engine.removeEntity(node.entity);
+
+                                if(node.entity.get(Rocket) != null) {
+                                    Game.instance.changeIngameState("failing");
+                                }
+                            } else {
+                                if(node.entity.get(Rocket) != null) {
+                                    if(other.entity.get(Star) != null) {
+                                        trace("Star pickup!");
+                                        engine.removeEntity(other.entity);
+                                        Game.instance.changeIngameState("winning");
+                                        node.object.setDynamic(false);
+                                    }
+                                }
                             }
                         } else {
                             var direction = delta;

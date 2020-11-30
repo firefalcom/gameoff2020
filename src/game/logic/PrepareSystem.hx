@@ -23,6 +23,12 @@ class PrepareSystem extends ash.core.System {
             rocketEntity = e;
             engine.addEntity(e);
         }
+        {
+            for(e in Game.instance.session.stars) {
+                engine.removeEntity(e);
+                engine.addEntity(e);
+            }
+        }
         launcherEntity = engine.getEntityByName("launcher");
         engine.getEntityByName("camera").get(Camera).zoomTo(1);
         rocketEntity.get(Transform).position.copyFrom(launcherEntity.get(Transform).position);
