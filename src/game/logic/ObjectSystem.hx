@@ -30,6 +30,8 @@ class ObjectSystem extends ListIteratingSystem<ObjectNode> {
         var object = node.object;
         var transform = node.transform;
 
+        if(Game.instance.session.paused) return;
+
         if(object.isDynamic()) {
             for(other in nodeList) {
                 if(other != node) {

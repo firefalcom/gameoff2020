@@ -13,7 +13,7 @@ $hud_margin:2.6%;
 
 .hud{
     pointer-events:none;
-    cursor: url("../../data/ui/cursor_target.png"), auto;
+    cursor: url("../../data/ui/cursor_target.png") 16 16, auto;
 
     p{
         margin:0;
@@ -117,6 +117,7 @@ $hud_margin:2.6%;
             right:0;
 
             .buttonPause{
+                pointer-events:auto;
                 padding:0 0 15px 15px;
                 display: flex;
                 align-items: center;
@@ -203,6 +204,7 @@ $hud_margin:2.6%;
         z-index: 1;
     }
     .pauseMenu{
+        display:none;
         pointer-events:none;
         position:absolute;
         top:0;
@@ -271,16 +273,17 @@ $hud_margin:2.6%;
 
     // Tutorial
     .tutoPanel{
+        z-index:2;
         pointer-events: auto;
         position: absolute;
         width:100%;
         height:100%;
         display:flex;
+        // display:none;
         justify-content: center;
         align-items: center;
         backdrop-filter:brightness(60%);
         cursor: default;
-
 
         .window{
             position: absolute;

@@ -28,6 +28,8 @@ class RocketSystem extends ListIteratingSystem<RocketNode> {
     }
 
     private function updateNode(node:RocketNode, dt:Float):Void {
+        if(Game.instance.session.paused) { return; }
+
         var object = node.object;
         var rocket = node.rocket;
         var transform = node.transform;

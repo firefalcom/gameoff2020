@@ -18,7 +18,26 @@ class HudSystem extends whiplash.UiSystem {
 
     public function new() {
         super();
-        set(".mainMenu .play", "click", () -> {
+        set(".hud .buttonPause", "click", () -> {
+            Game.instance.session.paused = true;
+            new JQuery(".hud .pauseMenu").show();
+        });
+        set(".hud .pauseMenu .resume", "click", () -> {
+            Game.instance.session.paused = false;
+            new JQuery(".hud .pauseMenu").hide();
+        });
+        set(".hud .pauseMenu .fullscreen", "click", () -> {
+            if(document.fullscreenElement == null) {
+                document.body.requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        });
+        set(".hud .pauseMenu .levels", "click", () -> {
+            Game.instance.changeState("levelMenu");
+        });
+        set(".hud .tutoPanel .button", "click", () -> {
+            new JQuery(".tutoPanel").hide();
         });
     }
 
@@ -28,9 +47,17 @@ class HudSystem extends whiplash.UiSystem {
         Game.instance.changeUiState("hud");
         attempts = new JQuery(".hud .life p");
         time = new JQuery(".hud .timer p");
-
         lastSeconds = null;
         lastAttempts = null;
+        new JQuery(".hud .levelNumber p").text("" + (Game.instance.session.levelIndex + 1));
+
+        if(Game.instance.session.levelIndex == 0) {
+            var userScore = js.Browser.getLocalStorage().getItem("level-0");
+
+            if(userScore == null) {
+                new JQuery(".tutoPanel").show();
+            }
+        }
     }
 
     public override function removeFromEngine(engine:Engine) {
@@ -46,6 +73,7 @@ class HudSystem extends whiplash.UiSystem {
             var minutes = Std.int(lastSeconds / 60);
             time.text(minutes + ":" + (seconds < 10 ? "0" : "") + seconds);
         }
+
         if(Std.int(session.attempts) != lastAttempts) {
             lastAttempts = session.attempts;
             attempts.text("" + lastAttempts);
