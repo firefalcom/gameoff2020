@@ -21,6 +21,9 @@ class WinningSystem extends whiplash.UiSystem {
             Game.instance.changeState("levelMenu");
             Game.instance.changeUiState("levelMenu");
         });
+        set(".win .next", "click", () -> {
+            Game.instance.startGame(Game.instance.session.levelIndex + 1);
+        });
     }
 
     public override function addToEngine(engine:Engine) {
