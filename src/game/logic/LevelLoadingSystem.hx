@@ -43,6 +43,7 @@ class LevelLoadingSystem extends whiplash.UiSystem {
         var objects:Array<Dynamic> = json.layers[0].objects;
         var mapWidth = json.tilewidth * json.width;
         var mapHeight = json.tileheight * json.height;
+        Game.instance.session.stars = [];
 
         for(o in objects) {
             if(o.ellipse) {

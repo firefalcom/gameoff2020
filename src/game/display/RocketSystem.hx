@@ -30,6 +30,9 @@ class RocketSystem extends ListIteratingSystem<RocketNode> {
     private function updateNode(node:RocketNode, dt:Float):Void {
         var boostLevel = node.logicRocket.boostLevel;
         var boostEntities = node.displayRocket.boostEntities;
+        var sound = node.displayRocket.sound;
+
+        sound.setVolume((boostLevel) * 0.2);
 
         for(i in 0...boostEntities.length) {
             var e = boostEntities[i];
@@ -47,9 +50,11 @@ class RocketSystem extends ListIteratingSystem<RocketNode> {
     }
 
     private function onNodeAdded(node:RocketNode) {
+        node.displayRocket.sound = whiplash.AudioManager.playSound("thruster", 0, true);
     }
 
     private function onNodeRemoved(node:RocketNode) {
+        whiplash.AudioManager.stopSound("thruster");
     }
 }
 
