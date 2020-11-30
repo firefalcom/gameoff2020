@@ -32,6 +32,7 @@ class LevelLoadingSystem extends whiplash.UiSystem {
         var http = new haxe.Http("../data/levels/level" + Game.instance.session.levelIndex + ".json");
         http.onData = parse;
         http.onError = (e) -> {
+            trace("Error while loading level" + Game.instance.session.levelIndex);
             Game.instance.changeState("mainMenu");
         };
         http.request();
