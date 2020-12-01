@@ -11,12 +11,6 @@ class LevelMenuSystem extends whiplash.UiSystem {
 
     public function new() {
         super();
-    }
-
-    public override function addToEngine(engine:Engine) {
-        super.addToEngine(engine);
-        this.engine = engine;
-        Game.instance.changeUiState("levelMenu");
 
         if(!pageIsGenerated) {
             var container = new JQuery(".levelMenu .content");
@@ -34,7 +28,12 @@ class LevelMenuSystem extends whiplash.UiSystem {
 
             pageIsGenerated = true;
         }
+    }
 
+    public override function addToEngine(engine:Engine) {
+        super.addToEngine(engine);
+        this.engine = engine;
+        Game.instance.changeUiState("levelMenu");
         {
             var starContainers = new JQuery(".levelMenu .starsArea");
             var levelBars = new JQuery(".levelMenu .levelBar");
