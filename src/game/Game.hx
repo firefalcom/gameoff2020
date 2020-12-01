@@ -143,7 +143,7 @@ class Game extends whiplash.Application {
         var e = engine.getEntityByName("camera");
 
         if(e != null) {
-            e.get(whiplash.phaser.Camera).getWorldPoint(mouseCoords.x, mouseCoords.y);
+            return e.get(whiplash.phaser.Camera).getWorldPoint(mouseCoords.x, mouseCoords.y);
         }
 
         return new Vector2(0, 0);
