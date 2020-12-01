@@ -52,6 +52,7 @@ class ObjectSystem extends ListIteratingSystem<ObjectNode> {
                                     if(other.entity.get(Star) != null) {
                                         engine.removeEntity(other.entity);
                                         Game.instance.session.starsCollected++;
+                                        whiplash.AudioManager.playSound("fx_starGet", 0.75);
                                     }
                                 }
                             }

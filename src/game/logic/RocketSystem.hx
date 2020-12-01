@@ -1,5 +1,6 @@
 package game.logic;
 
+import js.jquery.JQuery;
 import ash.tools.ListIteratingSystem;
 import ash.core.*;
 import whiplash.phaser.*;
@@ -36,6 +37,8 @@ class RocketSystem extends ListIteratingSystem<RocketNode> {
 
         rocket.boostLevel = 0;
         var boost = 0;
+        var boostButtonOff = new JQuery(".hud .bottom .infoBloc-1 .imgButtonBoosterOff");
+        var boostButtonOn = new JQuery(".hud .bottom .infoBloc-1 .imgButtonBoosterOn");
 
         if(whiplash.Input.keys[' ']) {
             rocket.boostLevel = 2;
@@ -43,6 +46,11 @@ class RocketSystem extends ListIteratingSystem<RocketNode> {
         } else if(whiplash.Input.mouseButtons[0]) {
             rocket.boostLevel = 1;
             boost = Config.rocket.boost;
+            boostButtonOn.css("visibility", "visible");
+            boostButtonOff.css("visibility", "hidden");
+        } else {
+            boostButtonOff.css("visibility", "visible");
+            boostButtonOn.css("visibility", "hidden");
         }
 
         if(boost != 0) {

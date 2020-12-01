@@ -145,14 +145,22 @@ $hud_margin:2.6%;
         margin:$hud_margin;
         .infoBloc-1{
 
-            .imgButtonBooster{
+            .imgButtonBoosterOff{
+                position: absolute;
                 background: url("../../data/ui/hud/button_booster_off.svg") center no-repeat;
                 width:100px;
                 height:100px;
+                visibility:visible;
                 cursor:pointer;
             }
-            .imgButtonBooster:active{
+
+            .imgButtonBoosterOn{
+                position: absolute;
                 background: url("../../data/ui/hud/button_booster_on.svg") center no-repeat;
+                width:100px;
+                height:100px;
+                visibility:hidden;
+                cursor:pointer;
             }
         }
     }

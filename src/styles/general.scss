@@ -7,3 +7,10 @@ p, h1, h2, h3, h5, h6{
     font-family: "bungee";
     line-height: 0.79em;
 } 
+
+body::after{
+    position:absolute; width:0; height:0;
+    content:url('../../data/ui/hud/button_booster_on.svg') url('../../data/ui/hud/button_booster_off.svg');
+    overflow:hidden;
+    z-index:-1;
+}
