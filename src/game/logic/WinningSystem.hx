@@ -5,10 +5,6 @@ import whiplash.phaser.*;
 import whiplash.math.Vector2;
 import js.jquery.JQuery;
 
-class StarNode extends Node<StarNode> {
-    public var star:Star;
-}
-
 class WinningSystem extends whiplash.UiSystem {
     private var engine:Engine;
 
@@ -31,7 +27,7 @@ class WinningSystem extends whiplash.UiSystem {
         this.engine = engine;
         Game.instance.changeUiState("win");
         var session = Game.instance.session;
-        var count = 3 - Lambda.count(engine.getNodeList(StarNode));
+        var count = session.starsCollected;
 
         for(i in 0...count) {
             Game.instance.delay(() -> {
@@ -46,7 +42,7 @@ class WinningSystem extends whiplash.UiSystem {
             new JQuery(".win .lineTime p")[1].innerText = (minutes + ":" + (seconds < 10 ? "0" : "") + seconds);
         }
 
-        new JQuery(".win .lineLife p")[1].innerText = "" + session.attempts;
+        new JQuery(".win .lineLife p")[1].innerText = "" + (session.attempts - 1);
         var score = Std.int(1000 + 1000 * Math.pow(2, count) - session.time - session.attempts * 100);
 
         if(score < 0) { score = 0; }
@@ -63,6 +59,8 @@ class WinningSystem extends whiplash.UiSystem {
                 js.Browser.getLocalStorage().setItem("level-" + session.levelIndex, "" + count);
             }
         }
+
+        new JQuery(".win p.levelNumber").text("" + (Game.instance.session.levelIndex + 1));
         whiplash.AudioManager.playSound("moonlander_win_cut", 0.6);
     }
 

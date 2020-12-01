@@ -51,6 +51,7 @@ class ObjectSystem extends ListIteratingSystem<ObjectNode> {
                                 if(node.entity.get(Rocket) != null) {
                                     if(other.entity.get(Star) != null) {
                                         engine.removeEntity(other.entity);
+                                        Game.instance.session.starsCollected++;
                                     }
                                 }
                             }

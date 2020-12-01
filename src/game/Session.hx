@@ -9,6 +9,7 @@ class Session {
     public var paused:Bool = false;
 
     public var stars:Array<Entity> = [];
+    public var starsCollected:Int;
 
     public function new(levelIndex) {
         this.levelIndex = levelIndex;

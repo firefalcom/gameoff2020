@@ -41,6 +41,7 @@ class LandingSystem extends ListIteratingSystem<LandingNode> {
         if(ratio > 1) {
             Game.instance.changeIngameState("winning");
         }
+
     }
 
     private function onNodeAdded(node:LandingNode) {

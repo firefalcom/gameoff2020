@@ -28,6 +28,7 @@ class PrepareSystem extends ash.core.System {
             engine.addEntity(e);
         }
         {
+            Game.instance.session.starsCollected = 0;
             for(e in Game.instance.session.stars) {
                 engine.removeEntity(e);
                 engine.addEntity(e);
