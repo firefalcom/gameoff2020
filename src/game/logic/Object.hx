@@ -8,6 +8,7 @@ class Object {
     public var radius:Float;
     public var velocity:Vector2 = new Vector2(0,0);
     public var solid:Bool = true;
+    public var justCollide = false;
 
     public function new(_dynamic = true, mass, radius) {
         this._dynamic = _dynamic;

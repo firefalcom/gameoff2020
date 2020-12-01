@@ -9,6 +9,8 @@ class RocketNode extends Node<RocketNode> {
     public var transform:Transform;
     public var logicRocket:game.logic.Rocket;
     public var displayRocket:game.display.Rocket;
+    public var sprite:Sprite;
+    public var object:game.logic.Object;
 }
 
 class RocketSystem extends ListIteratingSystem<RocketNode> {
@@ -28,9 +30,11 @@ class RocketSystem extends ListIteratingSystem<RocketNode> {
     }
 
     private function updateNode(node:RocketNode, dt:Float):Void {
+        var displayRocket = node.displayRocket;
         var boostLevel = node.logicRocket.boostLevel;
-        var boostEntities = node.displayRocket.boostEntities;
-        var sound = node.displayRocket.sound;
+        var boostEntities = displayRocket.boostEntities;
+        var sound = displayRocket.sound;
+        var object = node.object;
 
         sound.setVolume((boostLevel) * 0.2);
 
@@ -47,6 +51,11 @@ class RocketSystem extends ListIteratingSystem<RocketNode> {
         }
 
         Game.instance.session.time += dt;
+
+        if(object.justCollide) {
+            node.sprite.play("explosion");
+            object.justCollide = false;
+        }
     }
 
     private function onNodeAdded(node:RocketNode) {

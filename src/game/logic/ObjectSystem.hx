@@ -42,10 +42,10 @@ class ObjectSystem extends ListIteratingSystem<ObjectNode> {
                     if(distance > 0) {
                         if(distance < object.radius + other.object.radius) {
                             if(other.object.solid) {
-                                engine.removeEntity(node.entity);
-
                                 if(node.entity.get(Rocket) != null) {
+                                    node.object.justCollide = true;
                                     Game.instance.changeIngameState("failing");
+                                    node.object.setDynamic(false);
                                 }
                             } else {
                                 if(node.entity.get(Rocket) != null) {
