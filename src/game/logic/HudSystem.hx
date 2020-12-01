@@ -31,16 +31,20 @@ class HudSystem extends whiplash.UiSystem {
 
             if(manager.music != null) {
                 manager.stopMusic();
+                new JQuery(".hud .pauseMenu .music #status").text("off");
             } else {
                 manager.playMusic("moonlander_theme_loop-warp", 0.2);
+                new JQuery(".hud .pauseMenu .music #status").text("on");
             }
 
         });
         set(".hud .pauseMenu .fullscreen", "click", () -> {
             if(document.fullscreenElement == null) {
                 document.body.requestFullscreen();
+                new JQuery(".hud .pauseMenu .fullscreen #status").text("on");
             } else {
                 document.exitFullscreen();
+                new JQuery(".hud .pauseMenu .fullscreen #status").text("off");
             }
         });
         set(".hud .pauseMenu .levels", "click", () -> {
