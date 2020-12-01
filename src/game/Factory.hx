@@ -12,7 +12,7 @@ class Factory {
         scene.load.spritesheet('fire-sheet', '../data/textures/fire.png', { frameWidth: 128, frameHeight: 128 });
         scene.load.spritesheet('landing-sheet', '../data/textures/spritesheet_target_V01.png', { frameWidth: 256, frameHeight: 78 });
         scene.load.spritesheet('launching-sheet', '../data/textures/spritesheet_launcher_V01.png', { frameWidth: 256, frameHeight: 256 });
-        scene.load.spritesheet('explosion-sheet', '../data/textures/spritesheet_explosion.png', { frameWidth: 512, frameHeight: 512});
+        scene.load.spritesheet('explosion-sheet', '../data/textures/spritesheet_explosion.webp', { frameWidth: 128, frameHeight: 128});
     }
 
     static public function load(scene:phaser.Scene) {
@@ -62,7 +62,8 @@ class Factory {
             { key:'explosion-sheet', frame: 7 },
             { key:'explosion-sheet', frame: 8 },
             { key:'explosion-sheet', frame: 9 },
-            { key:'explosion-sheet', frame: 10 }
+            { key:'explosion-sheet', frame: 10 },
+            { key:'explosion-sheet', frame: 11 }
             ],
             frameRate: 16,
             repeat: 0
