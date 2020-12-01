@@ -144,7 +144,11 @@ $hud_margin:2.6%;
         bottom:0;
         margin:$hud_margin;
         .infoBloc-1{
-
+            .buttonBooster{
+                position: relative;
+                width:100px;
+                height:100px;
+            }
             .imgButtonBoosterOff{
                 position: absolute;
                 background: url("../../data/ui/hud/button_booster_off.svg") center no-repeat;
