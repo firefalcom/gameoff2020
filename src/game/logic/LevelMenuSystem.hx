@@ -37,11 +37,20 @@ class LevelMenuSystem extends whiplash.UiSystem {
 
         {
             var starContainers = new JQuery(".levelMenu .starsArea");
+            var levelBars = new JQuery(".levelMenu .levelBar");
+            var nullFound = false;
 
             for(i in 0...game.Config.levelCount) {
                 var userScore:Int = Std.parseInt(js.Browser.getLocalStorage().getItem("level-" + i));
 
+                if(nullFound) {
+                    levelBars.eq(i).addClass("locked");
+                } else {
+                    levelBars.eq(i).removeClass("locked");
+                }
+
                 if(userScore == null) {
+                    nullFound = true;
                     userScore = 0;
                 }
 

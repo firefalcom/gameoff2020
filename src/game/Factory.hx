@@ -168,7 +168,7 @@ class Factory {
         var e = new Entity();
         e.add(new Transform());
         e.add(new Sprite("star"));
-        e.add(new game.logic.Object(false, 1, 32));
+        e.add(new game.logic.Object(false, 1, 24));
         e.get(game.logic.Object).solid = false;
         e.add(new game.logic.Star());
         e.add(new game.display.Glow(null, 1, 0.5));

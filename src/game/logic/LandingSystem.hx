@@ -35,7 +35,15 @@ class LandingSystem extends ListIteratingSystem<LandingNode> {
 
         var ratio:Float = landing.time / 2;
 
-        rocketTransform.rotation = whiplash.tween.FloatTween.get(startTransform.rotation, node.transform.rotation, EaseOut, ratio);
+        var targetRotation = node.transform.rotation;
+
+        if(targetRotation - startTransform.rotation > 360) {
+            targetRotation -= 360;
+        } else if(targetRotation - startTransform.rotation < - 360) {
+            targetRotation += 360;
+        }
+
+        rocketTransform.rotation = whiplash.tween.FloatTween.get(startTransform.rotation, targetRotation, EaseOut, ratio);
         rocketTransform.position = whiplash.tween.Vector2Tween.get(startTransform.position, node.landing.finalRocketPosition, EaseOut, ratio);
 
         if(ratio > 1) {

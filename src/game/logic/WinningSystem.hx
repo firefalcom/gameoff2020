@@ -55,7 +55,7 @@ class WinningSystem extends whiplash.UiSystem {
                 userScore = 0;
             }
 
-            if(count > userScore) {
+            if(count >= userScore) {
                 js.Browser.getLocalStorage().setItem("level-" + session.levelIndex, "" + count);
             }
         }
