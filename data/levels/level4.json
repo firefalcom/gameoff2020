@@ -35,8 +35,8 @@
                  "type":"earth",
                  "visible":true,
                  "width":235.631192518742,
-                 "x":572.9850606009,
-                 "y":451.553244735166
+                 "x":650.48855384729,
+                 "y":205.926789215837
                 }, 
                 {
                  "ellipse":true,
@@ -47,7 +47,7 @@
                         {
                          "name":"land",
                          "type":"float",
-                         "value":-35
+                         "value":-50
                         }, 
                         {
                          "name":"mass",
@@ -58,8 +58,8 @@
                  "type":"moon",
                  "visible":true,
                  "width":97.9265785609398,
-                 "x":212.610800714312,
-                 "y":370.599719445978
+                 "x":249.574005185667,
+                 "y":283.557334723109
                 }, 
                 {
                  "height":0,
@@ -70,8 +70,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":34.8436906464437,
-                 "y":775.541620414921
+                 "x":292.393760511372,
+                 "y":526.338080591912
                 }, 
                 {
                  "height":0,
@@ -82,8 +82,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":922.466701821408,
-                 "y":764.798589980076
+                 "x":658.954824783681,
+                 "y":571.63603758138
                 }, 
                 {
                  "height":0,
@@ -94,8 +94,26 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":301.054502851022,
-                 "y":509.771440804264
+                 "x":493.024693815158,
+                 "y":290.376936845251
+                }, 
+                {
+                 "ellipse":true,
+                 "height":269.473684210526,
+                 "id":14,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"mass",
+                         "type":"float",
+                         "value":5000
+                        }],
+                 "rotation":0,
+                 "type":"exotic",
+                 "visible":true,
+                 "width":269.473684210526,
+                 "x":323.12994876572,
+                 "y":606.911970190964
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -104,7 +122,7 @@
          "y":0
         }],
  "nextlayerid":3,
- "nextobjectid":14,
+ "nextobjectid":15,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.4.3",
