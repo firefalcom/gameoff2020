@@ -115,6 +115,12 @@ class Game extends whiplash.Application {
         resize();
         changeState("mainMenu");
         whiplash.AudioManager.playMusic("moonlander_theme_loop-warp", 0.2);
+        new js.jquery.JQuery(".button").click((e) -> {
+            whiplash.AudioManager.playSound("fx_ui_select_02", 0.5);
+        });
+        new js.jquery.JQuery(".button").mouseover((e) -> {
+            whiplash.AudioManager.playSound("fx_ui_select_01", 0.5);
+        });
     }
 
     public function startGame(levelIndex:Int = 0) {
