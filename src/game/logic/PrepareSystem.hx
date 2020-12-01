@@ -30,9 +30,11 @@ class PrepareSystem extends ash.core.System {
         }
         {
             Game.instance.session.reset();
+
             for(e in Game.instance.session.stars) {
-                engine.removeEntity(e);
-                engine.addEntity(e);
+                if(e.name == null || engine.getEntityByName(e.name) == null) {
+                    engine.addEntity(e);
+                }
             }
         }
         launcherEntity = engine.getEntityByName("launcher");
