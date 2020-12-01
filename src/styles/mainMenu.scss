@@ -85,6 +85,14 @@
         background: url("../../data/ui/logo_firefalcom_white.svg") bottom no-repeat;
         background-size: 100%;
     }
+    .contact{
+        position: absolute;
+        bottom:4.6%;
+        left:2.6%;
+    }
+    .contact p{
+        font-size: 0.9em;
+    }
 
     @keyframes tremb {
         0% {
