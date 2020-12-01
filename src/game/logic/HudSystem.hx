@@ -19,8 +19,12 @@ class HudSystem extends whiplash.UiSystem {
     public function new() {
         super();
         set(".hud .buttonPause", "click", () -> {
-            Game.instance.session.paused = true;
-            new JQuery(".hud .pauseMenu").show();
+            var session = Game.instance.session;
+
+            if(!session.dead) {
+                session.paused = true;
+                new JQuery(".hud .pauseMenu").show();
+            }
         });
         set(".hud .pauseMenu .resume", "click", () -> {
             Game.instance.session.paused = false;

@@ -19,6 +19,8 @@ class FailingSystem extends whiplash.UiSystem {
         timeLeft = 2;
 
         whiplash.AudioManager.playSound("moonlander_lose_cut");
+
+        Game.instance.session.dead = true;
     }
 
     public override function removeFromEngine(engine:Engine) {
