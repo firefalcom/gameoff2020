@@ -29,6 +29,7 @@ class MainMenuSystem extends whiplash.UiSystem {
     public override function addToEngine(engine:Engine) {
         super.addToEngine(engine);
         this.engine = engine;
+        engine.removeAllEntities();
         Game.instance.changeUiState("mainMenu");
     }
 

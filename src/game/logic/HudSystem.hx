@@ -48,7 +48,6 @@ class HudSystem extends whiplash.UiSystem {
             }
         });
         set(".hud .pauseMenu .mainMenu", "click", () -> {
-            engine.removeAllEntities();
             Game.instance.changeState("mainMenu");
         });
         set(".hud .tutoPanel .button", "click", () -> {
