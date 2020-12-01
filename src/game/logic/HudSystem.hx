@@ -47,8 +47,9 @@ class HudSystem extends whiplash.UiSystem {
                 new JQuery(".hud .pauseMenu .fullscreen #status").text("off");
             }
         });
-        set(".hud .pauseMenu .levels", "click", () -> {
-            Game.instance.changeState("levelMenu");
+        set(".hud .pauseMenu .mainMenu", "click", () -> {
+            engine.removeAllEntities();
+            Game.instance.changeState("mainMenu");
         });
         set(".hud .tutoPanel .button", "click", () -> {
             new JQuery(".tutoPanel").hide();
