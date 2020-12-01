@@ -47,7 +47,7 @@
                         {
                          "name":"land",
                          "type":"float",
-                         "value":-35
+                         "value":-130
                         }, 
                         {
                          "name":"mass",
@@ -58,8 +58,8 @@
                  "type":"moon",
                  "visible":true,
                  "width":97.9265785609398,
-                 "x":297.653185437181,
-                 "y":450.722681718917
+                 "x":555.653185437181,
+                 "y":234.722681718917
                 }, 
                 {
                  "height":0,
@@ -70,8 +70,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":585.908432146211,
-                 "y":362.079114592844
+                 "x":234.907034847655,
+                 "y":844.690199828056
                 }, 
                 {
                  "height":0,
@@ -82,8 +82,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":860.63065151866,
-                 "y":666.04498029214
+                 "x":174.63065151866,
+                 "y":500.04498029214
                 }, 
                 {
                  "height":0,
@@ -94,8 +94,26 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":629.788550359173,
-                 "y":581.204137590477
+                 "x":-86.211449640827,
+                 "y":727.204137590477
+                }, 
+                {
+                 "ellipse":true,
+                 "height":238.891089108911,
+                 "id":14,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"mass",
+                         "type":"float",
+                         "value":2500
+                        }],
+                 "rotation":0,
+                 "type":"exotic",
+                 "visible":true,
+                 "width":232,
+                 "x":6,
+                 "y":559.108910891089
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -104,7 +122,7 @@
          "y":0
         }],
  "nextlayerid":3,
- "nextobjectid":14,
+ "nextobjectid":16,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.4.3",
