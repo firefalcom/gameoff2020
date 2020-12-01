@@ -15,6 +15,7 @@ class RocketNode extends Node<RocketNode> {
 
 class RocketSystem extends ListIteratingSystem<RocketNode> {
     private var engine:Engine;
+    public var isCrashed:Bool;
 
     public function new() {
         super(RocketNode, updateNode, onNodeAdded, onNodeRemoved);
@@ -42,7 +43,7 @@ class RocketSystem extends ListIteratingSystem<RocketNode> {
             var e = boostEntities[i];
 
             if(e != null) {
-                if(i == boostLevel) {
+                if(i == boostLevel && !isCrashed) {
                     e.get(Sprite).alpha = 0.6;
                 } else {
                     e.get(Sprite).alpha = 0;
@@ -55,10 +56,12 @@ class RocketSystem extends ListIteratingSystem<RocketNode> {
         if(object.justCollide) {
             node.sprite.play("explosion");
             object.justCollide = false;
+            isCrashed = true;
         }
     }
 
     private function onNodeAdded(node:RocketNode) {
+        isCrashed = false;
         node.displayRocket.sound = whiplash.AudioManager.playSound("thruster", 0, true);
     }
 

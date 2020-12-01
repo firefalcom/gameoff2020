@@ -23,6 +23,7 @@ class PrepareSystem extends ash.core.System {
 
             var e = Factory.createRocket();
             e.get(Transform).position.setTo(-10000, 100);
+            e.get(Transform).rotation = engine.getEntityByName("launcher").get(Transform).rotation;
             e.get(Object).setDynamic(false);
             rocketEntity = e;
             engine.addEntity(e);
