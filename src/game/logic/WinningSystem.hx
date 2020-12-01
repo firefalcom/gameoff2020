@@ -15,7 +15,7 @@ class WinningSystem extends whiplash.UiSystem {
     public function new() {
         super();
         set(".win .retry", "click", () -> {
-            Game.instance.startGame();
+            Game.instance.startGame(Game.instance.session.levelIndex);
         });
         set(".win .levelSelect", "click", () -> {
             Game.instance.changeState("levelMenu");
@@ -63,7 +63,7 @@ class WinningSystem extends whiplash.UiSystem {
                 js.Browser.getLocalStorage().setItem("level-" + session.levelIndex, "" + count);
             }
         }
-        whiplash.AudioManager.playSound("moonlander_win_cut");
+        whiplash.AudioManager.playSound("moonlander_win_cut", 0.6);
     }
 
     public override function removeFromEngine(engine:Engine) {
