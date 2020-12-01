@@ -55,6 +55,7 @@ class RocketSystem extends ListIteratingSystem<RocketNode> {
 
         if(object.justCollide) {
             node.sprite.play("explosion");
+            node.transform.scale.setTo(1.25);
             object.justCollide = false;
             isCrashed = true;
         }
