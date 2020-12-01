@@ -35,7 +35,7 @@ class LandingPlatformSystem extends ListIteratingSystem<LandingPlatformNode> {
         var rocketTransform = rocketNode.transform;
         var rocketObject = rocketNode.object;
 
-        if(!rocketObject.isDynamic()) {
+        if(rocketObject == null || !rocketObject.isDynamic()) {
             return;
         }
 

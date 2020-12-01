@@ -15,8 +15,6 @@ class Game extends whiplash.Application {
 
     public var session:Session;
 
-    public var camera:whiplash.phaser.Camera;
-
     static function main():Void {
         new Game();
     }
@@ -142,7 +140,13 @@ class Game extends whiplash.Application {
 
     public function getMouseWorldPosition():Vector2 {
         var mouseCoords = whiplash.Input.mouseCoordinates;
-        return camera.getWorldPoint(mouseCoords.x, mouseCoords.y);
+        var e = engine.getEntityByName("camera");
+
+        if(e != null) {
+            return e.get(whiplash.phaser.Camera).getWorldPoint(mouseCoords.x, mouseCoords.y);
+        }
+
+        return new Vector2(0, 0);
     }
 
     private function resize() {

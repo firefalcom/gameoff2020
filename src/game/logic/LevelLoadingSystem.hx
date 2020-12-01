@@ -26,7 +26,6 @@ class LevelLoadingSystem extends whiplash.UiSystem {
 
     private function initLoading() {
         var e = Factory.createCamera();
-        Game.instance.camera = e.get(whiplash.phaser.Camera);
         engine.addEntity(e);
         Game.instance.setupCamera();
         var http = new haxe.Http("../data/levels/level" + Game.instance.session.levelIndex + ".json");

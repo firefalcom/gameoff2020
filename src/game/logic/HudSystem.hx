@@ -19,8 +19,12 @@ class HudSystem extends whiplash.UiSystem {
     public function new() {
         super();
         set(".hud .buttonPause", "click", () -> {
-            Game.instance.session.paused = true;
-            new JQuery(".hud .pauseMenu").show();
+            var session = Game.instance.session;
+
+            if(!session.dead) {
+                session.paused = true;
+                new JQuery(".hud .pauseMenu").show();
+            }
         });
         set(".hud .pauseMenu .resume", "click", () -> {
             Game.instance.session.paused = false;
@@ -31,20 +35,24 @@ class HudSystem extends whiplash.UiSystem {
 
             if(manager.music != null) {
                 manager.stopMusic();
+                new JQuery(".hud .pauseMenu .music #status").text("off");
             } else {
                 manager.playMusic("moonlander_theme_loop-warp", 0.2);
+                new JQuery(".hud .pauseMenu .music #status").text("on");
             }
 
         });
         set(".hud .pauseMenu .fullscreen", "click", () -> {
             if(document.fullscreenElement == null) {
                 document.body.requestFullscreen();
+                new JQuery(".hud .pauseMenu .fullscreen #status").text("on");
             } else {
                 document.exitFullscreen();
+                new JQuery(".hud .pauseMenu .fullscreen #status").text("off");
             }
         });
-        set(".hud .pauseMenu .levels", "click", () -> {
-            Game.instance.changeState("levelMenu");
+        set(".hud .pauseMenu .mainMenu", "click", () -> {
+            Game.instance.changeState("mainMenu");
         });
         set(".hud .tutoPanel .button", "click", () -> {
             new JQuery(".tutoPanel").hide();

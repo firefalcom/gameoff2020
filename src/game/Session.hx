@@ -11,7 +11,14 @@ class Session {
     public var stars:Array<Entity> = [];
     public var starsCollected:Int;
 
+    public var dead = false;
+
     public function new(levelIndex) {
         this.levelIndex = levelIndex;
+    }
+
+    public function reset() {
+        starsCollected = 0;
+        dead = false;
     }
 }

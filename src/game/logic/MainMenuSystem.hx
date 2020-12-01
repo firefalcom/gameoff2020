@@ -5,6 +5,7 @@ import whiplash.phaser.*;
 import whiplash.math.Vector2;
 
 import js.Browser.document;
+import js.jquery.JQuery;
 
 class MainMenuSystem extends whiplash.UiSystem {
     private var engine:Engine;
@@ -17,8 +18,10 @@ class MainMenuSystem extends whiplash.UiSystem {
         set(".mainMenu .fullScreenButton", "click", () -> {
             if(document.fullscreenElement == null) {
                 document.body.requestFullscreen();
+                new JQuery(".hud .pauseMenu .fullscreen #status").text("on");
             } else {
                 document.exitFullscreen();
+                new JQuery(".hud .pauseMenu .fullscreen #status").text("off");
             }
         });
     }
@@ -26,6 +29,7 @@ class MainMenuSystem extends whiplash.UiSystem {
     public override function addToEngine(engine:Engine) {
         super.addToEngine(engine);
         this.engine = engine;
+        engine.removeAllEntities();
         Game.instance.changeUiState("mainMenu");
     }
 
