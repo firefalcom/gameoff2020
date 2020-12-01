@@ -14,14 +14,14 @@ css: $(CSS_FILES)
 retail: compile
 	rm -rf retail
 	mkdir -p retail/build
-	rsync -avzm . ./retail -progress --exclude='**/phaser.js' --include='deps/**/*.css' --include='deps/**/*.js' --include='data/**' --include='src/*.css' --include='src/*.js' --exclude='haxe-babylon' --exclude='examples' --include='src/*.html' --include='*/' --include='index.html' --exclude='*'
+	rsync -avzm . ./retail -progress --exclude='**/phaser.js' --exclude='**/jquery-uipages/**' --exclude='**/babylon.max.js' --include='deps/**/*.css' --include='deps/**/*.js' --include='data/**' --include='src/*.css' --exclude='examples' --exclude='test' --exclude='skeleton' --include='src/*.html' --include='*/' --include='index.html' --exclude='*'
 	cp build/* -rf retail/build/
 
 obfuscate: retail
 	uglifyjs --compress --mangle -- build/generated.js > retail/build/generated.js
 
 zip: retail
-	zip -r atomic-$(VERSION).zip retail
+	zip -r moonlander-$(VERSION).zip retail
 
 
 
