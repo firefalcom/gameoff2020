@@ -35,6 +35,10 @@ class LandingPlatformSystem extends ListIteratingSystem<LandingPlatformNode> {
         var rocketTransform = rocketNode.transform;
         var rocketObject = rocketNode.object;
 
+        if(!rocketObject.isDynamic()) {
+            return;
+        }
+
         var distance = transform.position.getDistance(rocketTransform.position);
 
         if(distance < rocketObject.radius * game.Config.landing.distanceTolerance) {
